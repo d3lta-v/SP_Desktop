@@ -3,6 +3,8 @@
 export const ERROR_AUTH_INVALID_JSON = "Login server returned an invalid response. Please contact the developer.";
 export const ERROR_AUTH_INVALID_PASSWORD = "Incorrect password or username";
 
+export const TIMETABLE_NO_LESSONS = '[{"abbreviation":"","startTime":"","endTime":"","event":null,"type":"","code":"","location":""}]';
+
 //#endregion Constant strings
 
 

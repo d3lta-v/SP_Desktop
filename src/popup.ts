@@ -46,7 +46,6 @@ function calendarPoll() {
 
     // Repeat request once it is loaded or unsuccessfully loaded
     console.log("[DEBUG]: Loaded SP Calendar");
-    setTimeout(calendarPoll, 1000 * 60 * 5); // 5 min polling
   };
   request.open("GET", "https://mobileapps.sp.edu.sg/SPMobileAPI/api/GetAcadCalendar", true);
   request.send();
@@ -54,6 +53,8 @@ function calendarPoll() {
 
 function timetablePoll() {
   // Get timetable for today and see if user is attending lesson
+  // Note: no lesson state: [{"abbreviation":"","startTime":"","endTime":"","event":null,"type":"","code":"","location":""}]
+  
   Helper.userIsAuthenticated(function (authenticated, token) {
     if (authenticated && token) {
       let currentDateString = moment().format('DDMMYY');
@@ -62,12 +63,19 @@ function timetablePoll() {
       request.onloadend = function () {
         if (this.status == 200) {
           console.log(this.responseText);
+          if (this.responseText == SP.TIMETABLE_NO_LESSONS) {
+            // No lessons
+            $('#currentLesson').text("No Lesson");
+          }
         } else {
           console.log("[DEBUG]: Failed to load timetable: ")
+          console.log(this.status);
           console.log(this.responseText);
         }
       }
       request.send();
+    } else {
+      console.log("[DEBUG]: Token invalid, found during timetable retrieval!");
     }
   });
 }
@@ -107,9 +115,10 @@ $(function () {
       $('#main').show();
       $('#auth').hide();
 
-      clockPoll();
+      clockPoll(); // this does not use interval as it is time sensitive
       calendarPoll();
       timetablePoll();
+      setInterval(calendarPoll, 1000*60*5); // 5 minute calendar polling
       setInterval(timetablePoll, 1000*60*5); // 5 minute timetable polling
     } else {
       // Not authenticated, display login UI
