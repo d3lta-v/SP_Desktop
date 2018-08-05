@@ -1,3 +1,5 @@
+// MAY BE DEAD CODE: PLEASE REMOVE IF IT IS DEAD CODE
+
 import * as moment from 'moment';
 import * as SP from './datatypes';
 

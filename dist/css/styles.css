@@ -42,3 +42,8 @@ hr {
 #loginForm {
     margin-bottom: 0rem;
 }
+
+#authError {
+    color: gray;
+    margin-bottom: 1rem;
+}

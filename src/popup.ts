@@ -6,7 +6,15 @@ import * as Helper from './helper';
 
 let count = 0;
 
-// Functions
+function startAllPollers() {
+  clockPoll(); // this does not use interval as it is time sensitive
+  calendarPoll();
+  timetablePoll();
+  setInterval(calendarPoll, 1000 * 60 * 5); // 5 minute calendar polling
+  setInterval(timetablePoll, 1000 * 60 * 5); // 5 minute timetable polling
+}
+
+//#region Pollers
 
 function clockPoll() {
   $('#time').text(moment().format('HH:mm:ss'));
@@ -54,12 +62,12 @@ function calendarPoll() {
 function timetablePoll() {
   // Get timetable for today and see if user is attending lesson
   // Note: no lesson state: [{"abbreviation":"","startTime":"","endTime":"","event":null,"type":"","code":"","location":""}]
-  
+
   Helper.userIsAuthenticated(function (authenticated, token) {
     if (authenticated && token) {
       let currentDateString = moment().format('DDMMYY');
       console.log("[DEBUG] Requested for timetable with date: " + currentDateString);
-      let request = Helper.authenticatedRequest("GET", "https://mobileapps.sp.edu.sg/SPMobileAPI/api/GetStudentTimetableByIdAndDate/"+currentDateString, true, token);
+      let request = Helper.authenticatedRequest("GET", "https://mobileapps.sp.edu.sg/SPMobileAPI/api/GetStudentTimetableByIdAndDate/" + currentDateString, true, token);
       request.onloadend = function () {
         if (this.status == 200) {
           console.log(this.responseText);
@@ -79,6 +87,8 @@ function timetablePoll() {
     }
   });
 }
+
+//#endregion Pollers
 
 // Initialisation for jQuery. This block runs when document is ready
 $(function () {
@@ -114,19 +124,20 @@ $(function () {
       // User is logged in, show main UI and initialise pollers
       $('#main').show();
       $('#auth').hide();
-
-      clockPoll(); // this does not use interval as it is time sensitive
-      calendarPoll();
-      timetablePoll();
-      setInterval(calendarPoll, 1000*60*5); // 5 minute calendar polling
-      setInterval(timetablePoll, 1000*60*5); // 5 minute timetable polling
+      startAllPollers();
     } else {
-      // Not authenticated, display login UI
+      // Not authenticated, display login UI only
       $('#main').hide();
       $('#auth').show();
     }
   });
 
   // Initialise Login listener
-  $('#loginButton').click(Listener.loginListener);
+  $('#loginButton').click(function () {
+    Listener.loginListener(function () {
+      // Start up the pollers, as this lambda will only be called if
+      // the login is successful
+      startAllPollers();
+    });
+  });
 });

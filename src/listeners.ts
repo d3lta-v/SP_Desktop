@@ -3,22 +3,25 @@ import * as $ from 'jquery';
 
 /**
  * Hooks up to a .click() listener for the login event
+ * @param startPollers A callback for the main popup.ts to initialise recurring events (i.e. pollers)
  */
-export function loginListener() {
+export function loginListener(startPollers: () => void) {
   console.log("[DEBUG]: Login clicked");
   let request = new XMLHttpRequest();
   request.open("POST", "https://mobileapps.sp.edu.sg/SPMobileAPI/token", true);
   request.onloadend = function () {
-    //this.readyState == 4 && 
+    //old code: this.readyState == 4 && 
     if (this.status == 200) {
       // Save name and token into Chrome storage
       if (SP.User.isValid(this.responseText)) {
         let user = SP.User.fromJSON(this.responseText);
         chrome.storage.sync.set({ 'user': user }, () => {
           console.log("[DEBUG]: Login succeeded");
-          // Get rid of the "auth" <div> as we don't need this login dialog anymore
+          // Hide the login dialog and show the main UI
           $('#auth').hide();
           $('#main').show();
+          // Start pollers by calling back the main file (popup.ts)
+          startPollers();
         });
       } else {
         // Display error
@@ -32,7 +35,7 @@ export function loginListener() {
 
       // Error code "2" means login failed
       let responseObject = JSON.parse(this.responseText);
-      if (responseObject["error"] === 2) {
+      if (responseObject["error"] === "2") { //NOTE: THIS IS A STRING!
         $('#authError').show();
         $('#authError').text(SP.ERROR_AUTH_INVALID_PASSWORD);
       }
