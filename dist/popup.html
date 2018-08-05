@@ -1,0 +1,75 @@
+<!-- 
+  popup.html
+  Main file containing the layout of the entire popup window of the Chrome extension
+  HTML validated with no errors or warnings as per https://validator.w3.org/
+ -->
+<!-- <ul>
+            <li>Current URL: <span id="url"></span></li>
+            <li>Current Time: <span id="time"></span></li>
+        </ul>
+        <button id="countUp">count up</button>
+        <button id="changeBackground">change background</button> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="UTF-8">
+  <title>SP Desktop</title>
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:300,400,500" rel="stylesheet">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Scripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="js/vendor.js"></script>
+</head>
+
+<body>
+  <div class="container" id="mainBody">
+    <!-- Authentication dialog, hidden when authenticated -->
+    <div class="row" id="auth" hidden>
+      <h4 style="min-width: 8em;">Login with SPICE ID</h4>
+      <form id="loginForm">
+        <input class="u-full-width" type="text" placeholder="Username" id="username">
+        <input class="u-full-width" type="password" placeholder="Password" id="password">
+        <input class="u-full-width" type="hidden" value="password" id="grant_type">
+        <input class="u-full-width" type="hidden" value="ayy" id="deviceToken">
+      </form>
+      <p id="authError" hidden></p>
+      <button class="button-primary u-full-width" id="loginButton">Login</button>
+    </div>
+
+    <!-- Main user interface, shown only when authenticated -->
+    <div id="main" hidden>
+      <!-- First row: Clock and Status -->
+      <div class="row" id="clock">
+        <h2>
+          <span id="time"></span>
+        </h2>
+        <h4 id="currentLesson">Loading...</h4>
+        <h4 id="currentStatus">Loading...</h4>
+      </div>
+
+      <hr />
+
+      <!-- Second row:  -->
+      <div class="row">
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/popup.js"></script>
+</body>
+
+</html>

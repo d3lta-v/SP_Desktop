@@ -1,0 +1,40 @@
+/*
+* styles.css
+* Copyright 2018/2014, Pan Ziyue/Dave Gamache
+* Extended upon skeleton.css: www.getskeleton.com
+* This stylesheet is meant for SP Desktop Chrome extension
+* http://www.opensource.org/licenses/mit-license.php
+* 12/29/2014
+*/
+
+/* Custom overrides of skeleton.css */
+.container {
+    margin-top: 1em;
+}
+
+input[type="button"] {
+    font-weight: 500 !important;
+}
+
+legend {
+    font-weight: 500 !important;
+}
+
+body {
+    font-family: "Roboto", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+hr {
+    margin-top: 0rem !important;
+    margin-bottom: 0rem !important;
+}
+
+/* Custom elements */
+#time {
+    font-family: "Roboto Mono", "Roboto", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#mainBody {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
