@@ -38,3 +38,7 @@ hr {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+#loginForm {
+    margin-bottom: 0rem;
+}
