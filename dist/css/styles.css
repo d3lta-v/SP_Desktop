@@ -10,6 +10,7 @@
 /* Custom overrides of skeleton.css */
 .container {
     margin-top: 1em;
+    min-width: 30rem;
 }
 
 input[type="button"] {
@@ -31,6 +32,8 @@ hr {
 
 /* Custom elements */
 #time {
+    display:table;
+    margin:0 auto;
     font-family: "Roboto Mono", "Roboto", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -46,4 +49,19 @@ hr {
 #authError {
     color: gray;
     margin-bottom: 1rem;
+}
+
+#wifiConnectedContainer {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+#wifiConnectedText {
+    margin-left: 1rem;
+}
+
+#atsEntered {
+    text-align: center;
+    margin-top: 0.75rem;
+    margin-bottom: 0rem;
 }

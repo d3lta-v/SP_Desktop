@@ -16,8 +16,7 @@
   "dependencies": {
     "jquery": "~3.3.1",
     "moment": "~2.22.0",
-    "tslint": "^5.11.0",
-    "@fortawesome/fontawesome-free": "~5.2.0"
+    "tslint": "^5.11.0"
   },
   "devDependencies": {
     "@types/chrome": "~0.0.63",
