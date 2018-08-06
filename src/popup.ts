@@ -70,7 +70,8 @@ function timetablePoll() {
       let request = Helper.authenticatedRequest("GET", "https://mobileapps.sp.edu.sg/SPMobileAPI/api/GetStudentTimetableByIdAndDate/" + currentDateString, true, token);
       request.onloadend = function () {
         if (this.status == 200) {
-          console.log(this.responseText);
+          console.debug("[DEBUG]: Requested for timetable with returned data:");
+          console.debug(this.responseText);
           if (this.responseText == SP.TIMETABLE_NO_LESSONS) {
             // No lessons
             $('#currentLesson').text("No Lesson");
@@ -95,8 +96,8 @@ function timetablePoll() {
                   console.debug(entry);
                 }
               } else {
-                console.log("[WARNING]: Timetable entry is invalid:")
-                console.log(element);
+                console.warn("[WARNING]: Timetable entry is invalid:")
+                console.warn(element);
               }
             }
 
@@ -108,9 +109,9 @@ function timetablePoll() {
             }
           }
         } else {
-          console.log("[WARNING]: Failed to load timetable: ")
-          console.log(this.status);
-          console.log(this.responseText);
+          console.warn("[WARNING]: Failed to load timetable: ")
+          console.warn(this.status);
+          console.warn(this.responseText);
         }
       }
       request.send();
