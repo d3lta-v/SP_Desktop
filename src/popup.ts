@@ -53,7 +53,7 @@ function calendarPoll() {
     }
 
     // Repeat request once it is loaded or unsuccessfully loaded
-    console.log("[DEBUG]: Loaded SP Calendar");
+    console.debug("[DEBUG]: Loaded SP Calendar");
   };
   request.open("GET", "https://mobileapps.sp.edu.sg/SPMobileAPI/api/GetAcadCalendar", true);
   request.send();
@@ -66,7 +66,7 @@ function timetablePoll() {
   Helper.userIsAuthenticated(function (authenticated, token) {
     if (authenticated && token) {
       let currentDateString = moment().format('DDMMYY');
-      console.log("[DEBUG] Requested for timetable with date: " + currentDateString);
+      console.debug("[DEBUG] Requested for timetable with date: " + currentDateString);
       let request = Helper.authenticatedRequest("GET", "https://mobileapps.sp.edu.sg/SPMobileAPI/api/GetStudentTimetableByIdAndDate/" + currentDateString, true, token);
       request.onloadend = function () {
         if (this.status == 200) {
@@ -74,16 +74,48 @@ function timetablePoll() {
           if (this.responseText == SP.TIMETABLE_NO_LESSONS) {
             // No lessons
             $('#currentLesson').text("No Lesson");
+          } else {
+            let jsonArray = JSON.parse(this.responseText);
+
+            // Stage I: Validate all timetable entries
+            let timetableEntries: SP.TimetableEntry[] = [];
+            for (let i = 0; i < jsonArray.length; i++) {
+              const element: string = JSON.stringify(jsonArray[i]);
+              
+              let entryValid = SP.TimetableEntry.isValid(element);
+              if (entryValid) {
+                let entry = SP.TimetableEntry.fromJSON(element, currentDateString);
+                // Stage II: Insert all entries into array where it is currently happening
+                if (entry.getStartDateTime().getTime() > Date.now() && entry.getEndDateTime().getTime() < Date.now()) {
+                  timetableEntries.push(entry);
+                  console.debug("[DEBUG]: Lesson currently running: ");
+                  console.debug(entry);
+                } else {
+                  console.debug("[DEBUG]: Lesson not running: ");
+                  console.debug(entry);
+                }
+              } else {
+                console.log("[WARNING]: Timetable entry is invalid:")
+                console.log(element);
+              }
+            }
+
+            // Stage III: Display current lesson
+            if (timetableEntries.length > 0) {
+              $('#currentLesson').text(timetableEntries[0].getAbbreviation());
+            } else {
+              $('#currentLesson').text("No Lesson");
+            }
           }
         } else {
-          console.log("[DEBUG]: Failed to load timetable: ")
+          console.log("[WARNING]: Failed to load timetable: ")
           console.log(this.status);
           console.log(this.responseText);
         }
       }
       request.send();
     } else {
-      console.log("[DEBUG]: Token invalid, found during timetable retrieval!");
+      console.error("[ERROR]: Token invalid, found during timetable retrieval!");
     }
   });
 }

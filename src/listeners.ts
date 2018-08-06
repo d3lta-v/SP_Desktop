@@ -6,7 +6,7 @@ import * as $ from 'jquery';
  * @param startPollers A callback for the main popup.ts to initialise recurring events (i.e. pollers)
  */
 export function loginListener(startPollers: () => void) {
-  console.log("[DEBUG]: Login clicked");
+  console.debug("[DEBUG]: Login clicked");
   let request = new XMLHttpRequest();
   request.open("POST", "https://mobileapps.sp.edu.sg/SPMobileAPI/token", true);
   request.onloadend = function () {
@@ -30,8 +30,8 @@ export function loginListener(startPollers: () => void) {
       }
     } else {
       // Login failed in some way
-      console.log("[DEBUG]: Login failed: ");
-      console.log(this.responseText);
+      console.debug("[DEBUG]: Login failed: ");
+      console.debug(this.responseText);
 
       // Error code "2" means login failed
       let responseObject = JSON.parse(this.responseText);

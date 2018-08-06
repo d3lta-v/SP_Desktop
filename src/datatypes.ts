@@ -1,3 +1,5 @@
+import * as moment from 'moment';
+
 //#region Constant strings
 
 export const ERROR_AUTH_INVALID_JSON = "Login server returned an invalid response. Please contact the developer.";
@@ -51,7 +53,7 @@ export class User {
 
   static isValid(json: string): boolean {
     let unvalidatedJSON = JSON.parse(json);
-    let valid = true;
+    let valid = false;
 
     unvalidatedJSON.hasOwnProperty('access_token') ? valid = true : valid = false;
     unvalidatedJSON.hasOwnProperty('name') ? valid = true : valid = false;
@@ -69,3 +71,95 @@ export class User {
 // };
 
 //#endregion User
+
+//#region Timetable
+
+export enum TimetableEntryType {
+  Lab = "LAB",
+  Lecture = "LEC",
+  Tutorial = "TUT"
+}
+
+// Typical entry: {"abbreviation":"AMT","startTime":"13:00","endTime":"17:00","event":null,"type":"LAB","code":"ET0720","location":"T12605"}
+
+export class TimetableEntry {
+
+  constructor(
+    private abbreviation: string,
+    private startTime: Date,
+    private endTime: Date,
+    private type: TimetableEntryType,
+    private code: string,
+    private location: string
+  ) { }
+
+  getAbbreviation(): string {
+    return this.abbreviation;
+  }
+
+  getType(): string {
+    return this.type;
+  }
+
+  getModuleCode(): string {
+    return this.code;
+  }
+
+  getLocation(): string {
+    return this.location;
+  }
+
+  getStartDateTime(): Date {
+    return this.startTime;
+  }
+
+  getEndDateTime(): Date {
+    return this.endTime;
+  }
+
+  /**
+   * Converts a piece of JSON into a TimetableEntry
+   * @param json The JSON to convert to a TimetableEntry
+   * @param dateString The string of the date, in DDMMYY format
+   */
+  static fromJSON(json: string, dateString: string): TimetableEntry {
+    let rawJSON = JSON.parse(json);
+
+    // Parse the date and time of the timetable entry first
+    let startTimeString: string = rawJSON['startTime'];
+    let startTime = moment(dateString, "DDMMYY");
+    startTime.hour(parseInt(startTimeString.substr(0,2), 10));
+    startTime.minute(parseInt(startTimeString.substr(3,5), 10));
+
+    let endTimeString: string = rawJSON['endTime'];
+    let endTime = moment(dateString, "DDMMYY");
+    endTime.hour(parseInt(endTimeString.substr(0,2), 10));
+    endTime.minute(parseInt(endTimeString.substr(3,5), 10));
+
+    let entry = new TimetableEntry(
+      rawJSON['abbreviation'],
+      startTime.toDate(),
+      endTime.toDate(),
+      rawJSON['type'],
+      rawJSON['code'],
+      rawJSON['location']
+    );
+    return entry;
+  }
+
+  static isValid(json: string): boolean {
+    let unvalidatedJSON = JSON.parse(json);
+    let valid = false;
+
+    unvalidatedJSON.hasOwnProperty('abbreviation') ? valid = true : valid = false;
+    unvalidatedJSON.hasOwnProperty('startTime') ? valid = true : valid = false;
+    unvalidatedJSON.hasOwnProperty('endTime') ? valid = true : valid = false;
+    unvalidatedJSON.hasOwnProperty('type') ? valid = true : valid = false;
+    unvalidatedJSON.hasOwnProperty('code') ? valid = true : valid = false;
+    unvalidatedJSON.hasOwnProperty('location') ? valid = true : valid = false;
+
+    return valid;
+  }
+}
+
+//#endregion Timetable
