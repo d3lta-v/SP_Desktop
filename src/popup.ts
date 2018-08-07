@@ -153,11 +153,11 @@ function spWifiPoll() {
     if (connected) {
       console.debug("[DEBUG]: Connected to SP wifi");
       $('#wifiConnectedText').text("Connected to SP Wi-Fi");
-      $('#wifiLogo').css('color', 'black');
+      $('#wifiLogo').css('color', '#33C3F0');
     } else {
       console.debug("[DEBUG]: Not connected to SP wifi");
       $('#wifiConnectedText').text("Not connected to SP Wi-Fi");
-      $('#wifiLogo').css('color', 'gray');
+      $('#wifiLogo').css('color', '#bbb');
     }
   }
   request.open("HEAD", SP.URL_ATS, true);
