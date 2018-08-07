@@ -154,15 +154,18 @@ $(function () {
 
   // First things first, check if user is authenticated
   Helper.userIsAuthenticated(function (authenticated) {
+    $('#loading').show();
     if (authenticated) {
       // User is logged in, show main UI and initialise pollers
       $('#main').show();
       $('#auth').hide();
+      $('#loading').hide();
       startAllPollers();
     } else {
       // Not authenticated, display login UI only
       $('#main').hide();
       $('#auth').show();
+      $('#loading').hide();
     }
   });
 
