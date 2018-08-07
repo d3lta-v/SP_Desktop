@@ -101,6 +101,20 @@ export class TimetableEntry {
     return this.type;
   }
 
+  getTypeString(): string {
+    switch (this.type) {
+      case TimetableEntryType.Lab:
+        return "Lab";
+        break;
+      case TimetableEntryType.Lecture:
+        return "Lecture";
+        break;
+      case TimetableEntryType.Tutorial:
+        return "Tutorial";
+        break;
+    }
+  }
+
   getModuleCode(): string {
     return this.code;
   }
@@ -128,13 +142,13 @@ export class TimetableEntry {
     // Parse the date and time of the timetable entry first
     let startTimeString: string = rawJSON['startTime'];
     let startTime = moment(dateString, "DDMMYY");
-    startTime.hour(parseInt(startTimeString.substr(0,2), 10));
-    startTime.minute(parseInt(startTimeString.substr(3,5), 10));
+    startTime.hour(parseInt(startTimeString.substr(0, 2), 10));
+    startTime.minute(parseInt(startTimeString.substr(3, 5), 10));
 
     let endTimeString: string = rawJSON['endTime'];
     let endTime = moment(dateString, "DDMMYY");
-    endTime.hour(parseInt(endTimeString.substr(0,2), 10));
-    endTime.minute(parseInt(endTimeString.substr(3,5), 10));
+    endTime.hour(parseInt(endTimeString.substr(0, 2), 10));
+    endTime.minute(parseInt(endTimeString.substr(3, 5), 10));
 
     let entry = new TimetableEntry(
       rawJSON['abbreviation'],

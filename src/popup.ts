@@ -87,7 +87,8 @@ function timetablePoll() {
               if (entryValid) {
                 let entry = SP.TimetableEntry.fromJSON(element, currentDateString);
                 // Stage II: Insert all entries into array where it is currently happening
-                if (entry.getStartDateTime().getTime() > Date.now() && entry.getEndDateTime().getTime() < Date.now()) {
+                let currentDateTime = new Date();
+                if (entry.getStartDateTime() < currentDateTime && entry.getEndDateTime() > currentDateTime) {
                   timetableEntries.push(entry);
                   console.debug("[DEBUG]: Lesson currently running: ");
                   console.debug(entry);
@@ -103,7 +104,7 @@ function timetablePoll() {
 
             // Stage III: Display current lesson
             if (timetableEntries.length > 0) {
-              $('#currentLesson').text(timetableEntries[0].getAbbreviation());
+              $('#currentLesson').text(timetableEntries[0].getAbbreviation() + " " + timetableEntries[0].getTypeString() + " @ " + timetableEntries[0].getLocation());
             } else {
               $('#currentLesson').text("No Lesson");
             }
