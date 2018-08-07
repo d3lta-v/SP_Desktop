@@ -10,8 +10,10 @@ function startAllPollers() {
   clockPoll(); // this does not use interval as it is time sensitive
   calendarPoll();
   timetablePoll();
+  spWifiPoll();
   setInterval(calendarPoll, 1000 * 60 * 5); // 5 minute calendar polling
   setInterval(timetablePoll, 1000 * 60 * 5); // 5 minute timetable polling
+  setInterval(spWifiPoll, 1000 * 60 * 5); // 5 minute wifi polling
 }
 
 //#region Pollers
@@ -59,10 +61,10 @@ function calendarPoll() {
   request.send();
 }
 
+/**
+ * Gets the timetable for today and checks if the user is attending a lesson
+ */
 function timetablePoll() {
-  // Get timetable for today and see if user is attending lesson
-  // Note: no lesson state: [{"abbreviation":"","startTime":"","endTime":"","event":null,"type":"","code":"","location":""}]
-
   Helper.userIsAuthenticated(function (authenticated, token) {
     if (authenticated && token) {
       let currentDateString = moment().format('DDMMYY');
@@ -126,6 +128,40 @@ function timetablePoll() {
       console.error("[ERROR]: Token invalid, found during timetable retrieval!");
     }
   });
+}
+
+/**
+ * Checks if the user is connected to SP Wi-Fi
+ */
+function spWifiPoll() {
+  let request = new XMLHttpRequest();
+  request.onloadend = function () {
+    let connected = false;
+
+    if (this.status == 200) {
+      // Check if request actually gets the real ATS page
+      console.log(this.responseURL);
+      if (this.responseURL.startsWith("https://myats.sp.edu.sg")) {
+        connected = true;
+      } else {
+        // Else, Wi-Fi is considered to be not connected
+        connected = false;
+      }
+    }
+
+    // Display connected state
+    if (connected) {
+      console.debug("[DEBUG]: Connected to SP wifi");
+      $('#wifiConnectedText').text("Connected to SP Wi-Fi");
+      $('#wifiLogo').css('color', 'black');
+    } else {
+      console.debug("[DEBUG]: Not connected to SP wifi");
+      $('#wifiConnectedText').text("Not connected to SP Wi-Fi");
+      $('#wifiLogo').css('color', 'gray');
+    }
+  }
+  request.open("HEAD", SP.URL_ATS, true);
+  request.send();
 }
 
 //#endregion Pollers

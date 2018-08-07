@@ -28,6 +28,8 @@
 
   "permissions": [
     "storage",
-    "https://mobileapps.sp.edu.sg/*"
+    "https://mobileapps.sp.edu.sg/*",
+    "https://myats.sp.edu.sg/*",
+    "https://publicsas2.sp.edu.sg/*"
   ]
 }
