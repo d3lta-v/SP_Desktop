@@ -166,6 +166,9 @@ $(function () {
       $('#main').hide();
       $('#auth').show();
       $('#loading').hide();
+
+      // If the old login token still exists in storage, purge that token
+      Helper.purgeOldToken();
     }
   });
 

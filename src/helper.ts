@@ -42,3 +42,10 @@ export function userIsAuthenticated(callback: (authenticated: boolean, token: st
     }
   });
 }
+
+/**
+ * Purges the old user token from Chrome's internal storage
+ */
+export function purgeOldToken() {
+  chrome.storage.sync.remove('user');
+}
