@@ -49,3 +49,7 @@ export function loginListener(startPollers: () => void) {
     "&deviceToken=ayy";
   request.send(payload);
 }
+
+export function atsButtonListener() {
+  chrome.tabs.create({ url: SP.URL_ATS });
+}

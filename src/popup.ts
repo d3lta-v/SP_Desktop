@@ -67,7 +67,10 @@ function timetablePoll() {
     if (authenticated && token) {
       let currentDateString = moment().format('DDMMYY');
       console.debug("[DEBUG] Requested for timetable with date: " + currentDateString);
-      let request = Helper.authenticatedRequest("GET", "https://mobileapps.sp.edu.sg/SPMobileAPI/api/GetStudentTimetableByIdAndDate/" + currentDateString, true, token);
+      let request = Helper.authenticatedRequest(
+        "GET", 
+        "https://mobileapps.sp.edu.sg/SPMobileAPI/api/GetStudentTimetableByIdAndDate/" + 
+        currentDateString, true, token);
       request.onloadend = function () {
         if (this.status == 200) {
           console.debug("[DEBUG]: Requested for timetable with returned data:");
@@ -104,7 +107,10 @@ function timetablePoll() {
 
             // Stage III: Display current lesson
             if (timetableEntries.length > 0) {
-              $('#currentLesson').text(timetableEntries[0].getAbbreviation() + " " + timetableEntries[0].getTypeString() + " @ " + timetableEntries[0].getLocation());
+              $('#currentLesson').text(
+                timetableEntries[0].getAbbreviation() + " " + 
+                timetableEntries[0].getTypeString() + " @ " + 
+                timetableEntries[0].getLocation());
             } else {
               $('#currentLesson').text("No Lesson");
             }
@@ -167,7 +173,7 @@ $(function () {
       $('#auth').show();
       $('#loading').hide();
 
-      // If the old login token still exists in storage, purge that token
+      // If the old login token still exists in storage, purge it
       Helper.purgeOldToken();
     }
   });
@@ -179,5 +185,10 @@ $(function () {
       // the login is successful
       startAllPollers();
     });
+  });
+
+  // Setup ATS button listener
+  $('#atsButton').click(function () {
+    Listener.atsButtonListener();
   });
 });
