@@ -15,7 +15,7 @@ export function loginListener(startPollers: () => void) {
       // Save name and token into Chrome storage
       if (SP.User.isValid(this.responseText)) {
         let user = SP.User.fromJSON(this.responseText);
-        chrome.storage.sync.set({ 'user': user }, () => {
+        chrome.storage.local.set({ 'user': user }, () => {
           console.log("[DEBUG]: Login succeeded");
           // Hide the login dialog and show the main UI
           $('#auth').hide();

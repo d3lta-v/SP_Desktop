@@ -19,7 +19,7 @@ export function authenticatedRequest(method: string, url: string, async: boolean
  * @param token The session token, if the user is indeed authenticated. Else, it returns undefined
  */
 export function userIsAuthenticated(callback: (authenticated: boolean, token: string|undefined) => void) {
-  chrome.storage.sync.get('user', function(result) {
+  chrome.storage.local.get('user', function(result) {
     // First round: checking for existence of token
     if (result['user'] && result['user']['accessToken']) {
       // Second round: token validity checking with a small API endpoint
@@ -47,5 +47,5 @@ export function userIsAuthenticated(callback: (authenticated: boolean, token: st
  * Purges the old user token from Chrome's internal storage
  */
 export function purgeOldToken() {
-  chrome.storage.sync.remove('user');
+  chrome.storage.local.remove('user');
 }
