@@ -8,6 +8,7 @@ export const ERROR_AUTH_INVALID_PASSWORD = "Incorrect password or username";
 export const TIMETABLE_NO_LESSONS = '[{"abbreviation":"","startTime":"","endTime":"","event":null,"type":"","code":"","location":""}]';
 
 export const URL_ATS = "https://myats.sp.edu.sg/psc/cs90atstd/EMPLOYEE/HRMS/s/WEBLIB_A_ATS.ISCRIPT1.FieldFormula.IScript_SubmitAttendance";
+export const URL_ATS_LOGIN = "https://myats.sp.edu.sg/psc/cs90atstd/EMPLOYEE/HRMS/s/WEBLIB_A_ATS.ISCRIPT1.FieldFormula.IScript_SubmitAttendance?cmd=login&languageCd=ENG";
 
 //#endregion Constant strings
 

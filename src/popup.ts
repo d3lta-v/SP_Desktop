@@ -79,7 +79,7 @@ function timetablePoll() {
           console.debug(this.responseText);
           if (this.responseText == SP.TIMETABLE_NO_LESSONS) {
             // No lessons
-            $('#currentLesson').text("No Lesson");
+            $('#currentLesson').text("No Lessons");
           } else {
             let jsonArray = JSON.parse(this.responseText);
 
@@ -114,7 +114,7 @@ function timetablePoll() {
                 timetableEntries[0].getTypeString() + " @ " + 
                 timetableEntries[0].getLocation());
             } else {
-              $('#currentLesson').text("No Lesson");
+              $('#currentLesson').text("No Lesson Currently");
             }
           }
         } else {
@@ -140,7 +140,6 @@ function spWifiPoll() {
 
     if (this.status == 200) {
       // Check if request actually gets the real ATS page
-      console.log(this.responseURL);
       if (this.responseURL.startsWith("https://myats.sp.edu.sg")) {
         connected = true;
       } else {

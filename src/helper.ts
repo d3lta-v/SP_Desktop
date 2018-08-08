@@ -13,7 +13,7 @@ export function authenticatedRequest(method: string, url: string, async: boolean
 }
 
 /**
- * Checks if the current token stored in Chrome's storagge is a valid
+ * Checks if the current token stored in Chrome's storage is a valid
  * token (i.e. the user is already authenticated). 
  * @param callback A lambda that returns the authenticated state through a parameter
  * @param token The session token, if the user is indeed authenticated. Else, it returns undefined
@@ -39,6 +39,20 @@ export function userIsAuthenticated(callback: (authenticated: boolean, token: st
       request.send();
     } else {
      callback(false, undefined);
+    }
+  });
+}
+
+/**
+ * Retrieves the user's login token only and does not perform further validation
+ * @param callback A lambda that returns the user's token
+ */
+export function getUserToken(callback: (token: string|undefined) => void) {
+  chrome.storage.local.get('user', function (result) {
+    if (result['user'] && result['user']['accessToken']) {
+      callback(result['user']['accessToken']);
+    } else {
+      callback(undefined);
     }
   });
 }

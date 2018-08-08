@@ -16,12 +16,18 @@ export function loginListener(startPollers: () => void) {
       if (SP.User.isValid(this.responseText)) {
         let user = SP.User.fromJSON(this.responseText);
         chrome.storage.local.set({ 'user': user }, () => {
-          console.log("[DEBUG]: Login succeeded");
-          // Hide the login dialog and show the main UI
-          $('#auth').hide();
-          $('#main').show();
-          // Start pollers by calling back the main file (popup.ts)
-          startPollers();
+          console.debug("[DEBUG]: Login succeeded");
+          
+          // Save the username and passwords
+          chrome.storage.local.set({ 'username': <string>$('#username').val(),
+          'password': <string>$('#password').val() }, () => {
+            console.debug("[DEBUG]: Saved username and password for future");
+            // Hide the login dialog and show the main UI
+            $('#auth').hide();
+            $('#main').show();
+            // Start pollers by calling back the main file (popup.ts)
+            startPollers();
+          });
         });
       } else {
         // Display error
@@ -51,5 +57,37 @@ export function loginListener(startPollers: () => void) {
 }
 
 export function atsButtonListener() {
-  chrome.tabs.create({ url: SP.URL_ATS });
+  chrome.storage.local.get(['username', 'password'], function (result) {
+    if (result['username'] && result['password']) {
+      // postData(SP.URL_ATS_LOGIN, { 'timezoneOffset': -480, 'userid': result['username'], 'password': result['password'] });
+    } else {
+      // callback(undefined);
+      chrome.tabs.create({ url: SP.URL_ATS });
+
+      // TODO: Log user out by deleting token, username and password
+    }
+  });
+}
+
+function postData(url: string, data: any) {
+  chrome.tabs.create(
+    { url: chrome.runtime.getURL("ats_popup.html") },
+    function(tab: chrome.tabs.Tab) {
+      var handler = function(tabId: any, changeInfo: any) {
+        if(tabId === tab.id && changeInfo.status === "complete"){
+          chrome.tabs.onUpdated.removeListener(handler);
+          chrome.tabs.sendMessage(tabId, {url: url, data: data});
+        }
+      }
+
+      // in case we're faster than page load (usually):
+      chrome.tabs.onUpdated.addListener(handler);
+      // just in case we're too late with the listener:
+      if (tab.id) {
+        chrome.tabs.sendMessage(tab.id, {url: url, data: data});
+      } else {
+        console.error("[ERROR]: Tab ID is null!");
+      }
+    }
+  );  
 }
