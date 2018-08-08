@@ -160,7 +160,7 @@ function spWifiPoll() {
       $('#wifiLogo').css('color', '#bbb');
     }
   }
-  request.open("HEAD", SP.URL_ATS, true);
+  request.open("GET", SP.URL_ATS, true);
   request.send();
 }
 
