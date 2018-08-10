@@ -24,13 +24,23 @@ function postData(url: string, data: any) {
   );
 }
 
-chrome.storage.local.get(['username', 'password'], function (result) {
-  if (result['username'] && result['password']) {
-    postData(SP.URL_ATS_LOGIN, { 'timezoneOffset': -480, 'userid': result['username'], 'password': result['password'] });
-  } else {
-    // callback(undefined);
-    chrome.tabs.create({ url: SP.URL_ATS });
+// Background.ts NEEDS to listen for a specific message for it to redirect user to a page,
+// as calling it direct from popup.ts would not work (since popup closes the instant a new tab is instantiated)
 
-    // TODO: Log user out by deleting token, username and password
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.type == "ats-listener") {
+    chrome.storage.local.get(['username', 'password'], function (result) {
+      if (result['username'] && result['password']) {
+        postData(SP.URL_ATS_LOGIN, { 
+          'timezoneOffset': -480, 
+          'userid': result['username'], 
+          'pwd': result['password'] });
+      } else {
+        // callback(undefined);
+        chrome.tabs.create({ url: SP.URL_ATS });
+    
+        // TODO: Log user out by deleting token, username and password
+      }
+    });
   }
 });

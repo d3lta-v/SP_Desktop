@@ -1,11 +1,13 @@
-import * as SP from './datatypes';
-
+/**
+ * Message handler to redirect a user to a webpage with a POST request
+ * This method works on the principle of dynamically generating a <form>
+ * and submitting it to the desired URL.
+ * @param message The POST request's form-encoded fields as a Javascript Object
+ */
 var onMessageHandler = function (message: any) {
   // Ensure it is run only once, as we will try to message twice
   chrome.runtime.onMessage.removeListener(onMessageHandler);
   
-  console.log("Removed listener");
-
   // code from https://stackoverflow.com/a/7404033/934239
   var form = document.createElement("form");
   form.setAttribute("method", "post");
@@ -18,20 +20,7 @@ var onMessageHandler = function (message: any) {
     form.appendChild(hiddenField);
   }
   document.body.appendChild(form);
-  console.log(document.body);
-  // form.submit();
-  console.log("Submitted form");
-
-  // let request = new XMLHttpRequest();
-  // request.onloadend = function () {
-  //   if (this.status == 200) {
-  //     $("html").html(this.response);
-  //     console.log(this.responseText);
-  //   }
-  // };
-  // request.open("POST", SP.URL_ATS_LOGIN);
-  // request.send(); //TODO INSERT PASSWORD
+  form.submit();
 }
 
-console.log("Added listener");
 chrome.runtime.onMessage.addListener(onMessageHandler);

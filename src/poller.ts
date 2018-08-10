@@ -10,7 +10,7 @@ export function clockPoll() {
 
 export function calendarPoll() {
   // Get SP Academic Calendar and read from JSON
-  console.log("[DEBUG]: Calendar Poll called");
+  console.debug("[DEBUG]: Calendar Poll called");
   var request = new XMLHttpRequest();
   request.onloadend = function () {
     if (this.status == 200) {
@@ -41,7 +41,7 @@ export function calendarPoll() {
     }
 
     // Repeat request once it is loaded or unsuccessfully loaded
-    console.log("[DEBUG]: Loaded SP Calendar");
+    console.debug("[DEBUG]: Loaded SP Calendar");
     setTimeout(calendarPoll, 1000 * 60 * 5); // 5 min polling
   };
   request.open("GET", "https://mobileapps.sp.edu.sg/SPMobileAPI/api/GetAcadCalendar", true);
