@@ -48,7 +48,7 @@ Just a scratchpad here to help in guiding newborn features:
 ## Contributing
 Anybody is welcome to contribute to this repository! But first, let's talk environments so that you, the aspiring developer, know what's going on:
 
-###Environment
+### Environment
 
 * Original OS environment: macOS High Sierra
 * Text Editor/IDE: Visual Studio Code with TypeScript support
@@ -59,7 +59,7 @@ Anybody is welcome to contribute to this repository! But first, let's talk envir
 
 ### Folder structure:
 
-* src/: Source files in TypeScript
-* dist/: Unpacked version of the Chrome extension, all HTML and CSS goes here and you should edit those files direct in here
-* .vscode/: Visual Studio Code specific settings
-* webpack/: Webpack compilation settings
+* `src/`: Source files in TypeScript
+* `dist/`: Unpacked version of the Chrome extension, all HTML and CSS goes here and you should edit those files direct in here
+* `.vscode/`: Visual Studio Code specific settings
+* `webpack/`: Webpack compilation settings
