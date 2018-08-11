@@ -44,3 +44,22 @@ Just a scratchpad here to help in guiding newborn features:
 * Upcoming exam in home view
 * Upcoming lesson in home view
 * MIKE-SP clone
+
+## Contributing
+Anybody is welcome to contribute to this repository! But first, let's talk environments so that you, the aspiring developer, know what's going on:
+
+###Environment
+
+* Original OS environment: macOS High Sierra
+* Text Editor/IDE: Visual Studio Code with TypeScript support
+* Line endings: LF
+* Language: TypeScript 2.9.2
+* Build environment: Node/NPM with webpack
+* Initial setup: `node install` in the terminal
+
+### Folder structure:
+
+* src/: Source files in TypeScript
+* dist/: Unpacked version of the Chrome extension, all HTML and CSS goes here and you should edit those files direct in here
+* .vscode/: Visual Studio Code specific settings
+* webpack/: Webpack compilation settings
