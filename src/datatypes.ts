@@ -39,6 +39,9 @@ export class User {
     private name: string
   ) { }
 
+  /**
+   * Retrieves the access token for this `User`
+   */
   getAccessToken(): string {
     return this.accessToken;
   }
@@ -47,13 +50,20 @@ export class User {
     return this.name;
   }
 
-  // fromJSON is used to convert an serialized version
-  // of the User to an instance of the class
+  /**
+   * Converts a piece of JSON into an `User` object
+   * @param json The JSON to convert to an `User` object
+   * @param dateString The string of the date, in DDMMYY format
+   */
   static fromJSON(json: string): User {
     let rawJSON = JSON.parse(json);
     return new User(rawJSON['access_token'], rawJSON['name']);
   }
 
+  /**
+   * Validates a JSON string to be a User object
+   * @param json The JSON string to validate
+   */
   static isValid(json: string): boolean {
     let unvalidatedJSON = JSON.parse(json);
     let valid = false;
@@ -104,39 +114,51 @@ export class TimetableEntry {
     return this.type;
   }
 
+  /**
+   * Outputs the full formal version of each type of lesson, such as LEC->Lecture
+   */
   getTypeString(): string {
     switch (this.type) {
       case TimetableEntryType.Lab:
         return "Lab";
-        break;
       case TimetableEntryType.Lecture:
         return "Lecture";
-        break;
       case TimetableEntryType.Tutorial:
         return "Tutorial";
-        break;
     }
   }
 
+  /**
+   * Retrieves the module code for this timetable entry
+   */
   getModuleCode(): string {
     return this.code;
   }
 
+  /**
+   * Retrieves the location in which this lesson is taking place
+   */
   getLocation(): string {
     return this.location;
   }
 
+  /**
+   * Gets the starting date and time in a `Date` object of this lesson
+   */
   getStartDateTime(): Date {
     return this.startTime;
   }
 
+  /**
+   * Gets the ending date and time in a `Date` object of this lesson
+   */
   getEndDateTime(): Date {
     return this.endTime;
   }
 
   /**
-   * Converts a piece of JSON into a TimetableEntry
-   * @param json The JSON to convert to a TimetableEntry
+   * Converts a piece of JSON into a `TimetableEntry`
+   * @param json The JSON to convert to a `TimetableEntry`
    * @param dateString The string of the date, in DDMMYY format
    */
   static fromJSON(json: string, dateString: string): TimetableEntry {
@@ -164,6 +186,10 @@ export class TimetableEntry {
     return entry;
   }
 
+  /**
+   * Validates a JSON string to be a `TimetableEntry` object
+   * @param json The JSON string to validate
+   */
   static isValid(json: string): boolean {
     let unvalidatedJSON = JSON.parse(json);
     let valid = false;

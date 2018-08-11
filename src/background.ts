@@ -1,6 +1,11 @@
 //import * as moment from 'moment';
 import * as SP from './datatypes';
 
+/**
+ * Performs a POST request on the user's browser with parameters
+ * @param url The URL to POST to
+ * @param data The data to POST to the URL specified above
+ */
 function postData(url: string, data: any) {
   chrome.tabs.create(
     { url: chrome.runtime.getURL("ats_popup.html") },

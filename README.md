@@ -8,15 +8,39 @@ Before we go any further, it is imperative to highlight the shortcomings of this
 
 * ATS state detection is NOT functional
 * The username and password are stored locally in Chrome to facilitate automatic ATS login (in the same way the SP app does it)
-* Loads every time the popup is clicked. While every load cycle incurs >10kb of data transfer, with every effort to slim down the payload, this is still seen as a deficiency waiting to be patched in a newer release
+* Loads every time the popup is clicked. While every load cycle incurs <10kb of data transfer, with every effort to slim down the payload, this is still seen as a deficiency waiting to be patched in a newer release
 * No automatic reload if connection fails. You may have to reopen the popup to reload contents
 
 A **VERY** critical deficit of this application is the fact that it relies on an reverse engineered API, which may be subject to change at any time. Please open an issue with this GitHub repo with the Issues tab if you find any of the features not behaving norminally. Future upgrades to this extension includes an API endpoint self test, but due to time constraints, this will not be implemented in version 1.0.
 
-## Features
+## Features/Plus Points
 Now, with the caveats of this extension out of the way, let's talk about its major plus points:
 
 * Lightweight: with the most bare bones CSS and HTML code possible with no bulky frameworks like React or Angular, the entire extension is extremely lightweight
 * Did I say lightweight?: With every data transfer being less than 10kb, this app aims to be a responsible citizen of the school network by avoiding excessive data transfer as much as possible
 * Easy on the eyes: "Functional Design" is a key part of this app. The entire application is kept minimalistic, stripped of all distraction. Just like how a mission control should be
-* Completely automated ATS login. Save time by not having to log in every time you need to key in your ATS code
+
+## Features/Implementation
+
+* Real time 24-hour clock
+* SP Wi-Fi connectivity detection (includes Internet connectivity test)
+* Current Lesson indicator
+* Current school period/special event indicator
+* Automatic ATS login button (log into ATS without a password)
+
+## Planned features
+Just a scratchpad here to help in guiding newborn features:
+
+### Technical
+
+* Automated rekeying when old login token expires
+* Reduction of load time by aborting larger HTTP responses
+
+### Feature set
+
+* Crowd watch
+* Timetable listing for the next 5 days
+* Exam listing
+* Upcoming exam in home view
+* Upcoming lesson in home view
+* MIKE-SP clone
