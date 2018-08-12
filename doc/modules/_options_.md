@@ -19,7 +19,7 @@
 
 ▸ **restore_options**(): `void`
 
-*Defined in [options.ts:22](https://github.com/sammy0025/SP_Desktop/blob/95cf60f/src/options.ts#L22)*
+*Defined in [options.ts:22](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/options.ts#L22)*
 
 **Returns:** `void`
 
@@ -30,7 +30,7 @@ ___
 
 ▸ **save_options**(): `void`
 
-*Defined in [options.ts:4](https://github.com/sammy0025/SP_Desktop/blob/95cf60f/src/options.ts#L4)*
+*Defined in [options.ts:4](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/options.ts#L4)*
 
 **Returns:** `void`
 

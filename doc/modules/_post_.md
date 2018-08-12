@@ -18,7 +18,7 @@
 
 ▸ **onMessageHandler**(message: *`any`*): `void`
 
-*Defined in [post.ts:7](https://github.com/sammy0025/SP_Desktop/blob/95cf60f/src/post.ts#L7)*
+*Defined in [post.ts:7](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/post.ts#L7)*
 
 Message handler to redirect a user to a webpage with a POST request This method works on the principle of dynamically generating a
 

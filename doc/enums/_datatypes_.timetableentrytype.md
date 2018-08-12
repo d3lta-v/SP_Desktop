@@ -2,6 +2,8 @@
 
 # Enumeration: TimetableEntryType
 
+An enumeration of the different types of timetable events, such as a lecture, lab or tutorial
+
 ## Index
 
 ### Enumeration members
@@ -20,7 +22,7 @@
 
 **Lab**:  = "LAB"
 
-*Defined in [datatypes.ts:98](https://github.com/sammy0025/SP_Desktop/blob/95cf60f/src/datatypes.ts#L98)*
+*Defined in [datatypes.ts:104](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L104)*
 
 ___
 <a id="lecture"></a>
@@ -29,7 +31,7 @@ ___
 
 **Lecture**:  = "LEC"
 
-*Defined in [datatypes.ts:99](https://github.com/sammy0025/SP_Desktop/blob/95cf60f/src/datatypes.ts#L99)*
+*Defined in [datatypes.ts:105](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L105)*
 
 ___
 <a id="tutorial"></a>
@@ -38,7 +40,7 @@ ___
 
 **Tutorial**:  = "TUT"
 
-*Defined in [datatypes.ts:100](https://github.com/sammy0025/SP_Desktop/blob/95cf60f/src/datatypes.ts#L100)*
+*Defined in [datatypes.ts:106](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L106)*
 
 ___
 

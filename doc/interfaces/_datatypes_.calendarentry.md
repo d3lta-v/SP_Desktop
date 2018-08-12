@@ -2,6 +2,8 @@
 
 # Interface: CalendarEntry
 
+A simple interface for defining a single calendary entry from SP's Calendar API
+
 ## Hierarchy
 
 **CalendarEntry**
@@ -25,7 +27,7 @@
 
 **● colorId**: *`string`*
 
-*Defined in [datatypes.ts:30](https://github.com/sammy0025/SP_Desktop/blob/95cf60f/src/datatypes.ts#L30)*
+*Defined in [datatypes.ts:33](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L33)*
 
 ___
 <a id="endtime"></a>
@@ -34,7 +36,7 @@ ___
 
 **● endTime**: *`string`*
 
-*Defined in [datatypes.ts:29](https://github.com/sammy0025/SP_Desktop/blob/95cf60f/src/datatypes.ts#L29)*
+*Defined in [datatypes.ts:32](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L32)*
 
 ___
 <a id="starttime"></a>
@@ -43,7 +45,7 @@ ___
 
 **● startTime**: *`string`*
 
-*Defined in [datatypes.ts:28](https://github.com/sammy0025/SP_Desktop/blob/95cf60f/src/datatypes.ts#L28)*
+*Defined in [datatypes.ts:31](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L31)*
 
 ___
 <a id="summary"></a>
@@ -52,7 +54,7 @@ ___
 
 **● summary**: *`string`*
 
-*Defined in [datatypes.ts:27](https://github.com/sammy0025/SP_Desktop/blob/95cf60f/src/datatypes.ts#L27)*
+*Defined in [datatypes.ts:30](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L30)*
 
 ___
 

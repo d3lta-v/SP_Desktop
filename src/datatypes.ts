@@ -23,6 +23,9 @@ export const URL_CROWD_CHECK =
 
 //#region Calendar
 
+/**
+ * A simple interface for defining a single calendary entry from SP's Calendar API
+ */
 export interface CalendarEntry {
   summary: string;
   startTime: string;
@@ -94,16 +97,18 @@ export class User {
 
 //#region Timetable
 
+/**
+ * An enumeration of the different types of timetable events, such as a lecture, lab or tutorial
+ */
 export enum TimetableEntryType {
   Lab = "LAB",
   Lecture = "LEC",
   Tutorial = "TUT",
 }
 
-// Typical entry:
-// {"abbreviation":"AMT","startTime":"13:00","endTime":"17:00","event":null,
-// "type":"LAB","code":"ET0720","location":"T12605"}
-
+/**
+ * A class that Encapsulates a single timetable entry and provides helper functions
+ */
 export class TimetableEntry {
 
   /**
@@ -225,12 +230,18 @@ export class TimetableEntry {
 
 //#region Crowd
 
+/**
+ * An enum that describes different crowd levels as strings emitted by the API
+ */
 export enum CrowdLevel {
   Small = "Small",
   Medium = "Medium",
   Large = "Large",
 }
 
+/**
+ * A class that encapsulates information for a crowd at a certain location
+ */
 export class CrowdInfo {
 
   /**

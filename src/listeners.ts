@@ -58,6 +58,9 @@ export function loginListener(startPollers: () => void) {
   request.send(payload);
 }
 
+/**
+ * A listener to attach to a button to trigger the ATS interface
+ */
 export function atsButtonListener() {
   // Call background.ts to post data
   chrome.runtime.sendMessage({ type: "ats-listener" });

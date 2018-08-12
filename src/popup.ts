@@ -4,6 +4,9 @@ import * as SP from "./datatypes";
 import * as Listener from "./listeners";
 import * as Helper from "./helper";
 
+/**
+ * Starts all of the pollers, basically functions that needs to run periodically
+ */
 function startAllPollers() {
   clockPoll(); // this does not use interval as it is time sensitive
   calendarPoll();
@@ -27,7 +30,8 @@ function clockPoll() {
 }
 
 /**
- * Retrieves data from the SP Calendar API and displays it
+ * Retrieves events from the SP Calendar API and displays it in the main tab, if
+ * there is an event right now
  */
 function calendarPoll() {
   const request = new XMLHttpRequest();
@@ -67,7 +71,8 @@ function calendarPoll() {
 }
 
 /**
- * Gets the timetable for today and checks if the user is attending a lesson
+ * Gets the timetable for today and checks if the user is attending a lesson.
+ * Displays the lesson if any in the main tab
  */
 function timetablePoll() {
   Helper.userIsAuthenticated(function(authenticated, token) {

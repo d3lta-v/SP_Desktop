@@ -63,22 +63,3 @@ export function getUserToken(callback: (token: string|undefined) => void) {
 export function purgeOldToken() {
   chrome.storage.local.remove("user");
 }
-
-/**
- * Extremely fast and non-cryptographically secure hash function
- * Used to create short and sweet hashes for uniquely ID"ing strings
- * Based roughly on the Java String.hashCode() function
- * @param input Input string to hash
- */
-export function hash(input: string): number {
-  let hashResult = 0;
-  let i;
-  let chr;
-  if (input.length === 0) return hashResult;
-  for (i = 0; i < input.length; i++) {
-    chr   = input.charCodeAt(i);
-    hashResult  = ((hashResult << 5) - hashResult) + chr;
-    hashResult |= 0; // Convert to 32bit integer
-  }
-  return hashResult;
-}

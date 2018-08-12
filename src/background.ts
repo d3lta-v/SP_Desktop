@@ -2,7 +2,7 @@
 import * as SP from "./datatypes";
 
 /**
- * Performs a POST request on the user's browser with parameters
+ * Performs a POST request on a new browser tab with parameters
  * @param url The URL to POST to
  * @param data The data to POST to the URL specified above
  */

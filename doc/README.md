@@ -87,7 +87,6 @@ Anybody is welcome to contribute to this repository! But first, let's talk envir
 * ["helper"](modules/_helper_.md)
 * ["listeners"](modules/_listeners_.md)
 * ["options"](modules/_options_.md)
-* ["poller"](modules/_poller_.md)
 * ["popup"](modules/_popup_.md)
 * ["post"](modules/_post_.md)
 

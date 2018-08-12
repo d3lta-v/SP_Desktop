@@ -2,6 +2,8 @@
 
 # Enumeration: CrowdLevel
 
+An enum that describes different crowd levels as strings emitted by the API
+
 ## Index
 
 ### Enumeration members
@@ -20,7 +22,7 @@
 
 **Large**:  = "Large"
 
-*Defined in [datatypes.ts:231](https://github.com/sammy0025/SP_Desktop/blob/95cf60f/src/datatypes.ts#L231)*
+*Defined in [datatypes.ts:239](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L239)*
 
 ___
 <a id="medium"></a>
@@ -29,7 +31,7 @@ ___
 
 **Medium**:  = "Medium"
 
-*Defined in [datatypes.ts:230](https://github.com/sammy0025/SP_Desktop/blob/95cf60f/src/datatypes.ts#L230)*
+*Defined in [datatypes.ts:238](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L238)*
 
 ___
 <a id="small"></a>
@@ -38,7 +40,7 @@ ___
 
 **Small**:  = "Small"
 
-*Defined in [datatypes.ts:229](https://github.com/sammy0025/SP_Desktop/blob/95cf60f/src/datatypes.ts#L229)*
+*Defined in [datatypes.ts:237](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L237)*
 
 ___
 
