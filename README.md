@@ -1,5 +1,5 @@
 # SP Desktop (Chrome Edition)
-SP Desktop (Chrome Edition) is a simple, lean and mean piece of software that embeds directly into Chrome and acts as a "mission control" for SP students to use. 
+SP Desktop (Chrome Edition) is designed to be a simple, lean and mean piece of software that embeds directly into Chrome and acts as a "mission control" for SP students to use. 
 
 When someone mentions "mission control", massive projectors and data screens spring to mind. A mission control is a place where data needs to be localised and at the same time highly relevant and useful to the operator. This Chrome Extension was made with this philosophy in mind.
 
@@ -35,6 +35,8 @@ Just a scratchpad here to help in guiding newborn features:
 
 * Automated rekeying when old login token expires
 * Reduction of load time by aborting larger HTTP responses
+* Telemetry for error tracking of API changes
+* API endpoint self-test
 
 ### Feature set
 

@@ -15,6 +15,9 @@ FieldFormula.IScript_SubmitAttendance";
 export const URL_ATS_LOGIN =
 "https://myats.sp.edu.sg/psc/cs90atstd/EMPLOYEE/HRMS/s/WEBLIB_A_ATS.ISCRIPT1.\
 FieldFormula.IScript_SubmitAttendance?cmd=login&languageCd=ENG";
+export const URL_TIMETABLE = "https://mobileapps.sp.edu.sg/SPMobileAPI/api/GetStudentTimetableByIdAndDate/";
+export const URL_CROWD_CHECK =
+"https://mobileapps.sp.edu.sg/SPMobileAPI/api/GetAllFoodCourtCrowdWatch";
 
 //#endregion Constant strings
 
@@ -160,16 +163,23 @@ export class TimetableEntry {
     private location: string,
   ) { }
 
+  /**
+   * Retrieves the abbreviation for the module (such as OOP, OPSYS)
+   */
   public getAbbreviation(): string {
     return this.abbreviation;
   }
 
+  /**
+   * Retrieves the type of lesson, such as tutorial, lecture, or lab
+   */
   public getType(): string {
     return this.type;
   }
 
   /**
-   * Outputs the full formal version of each type of lesson, such as LEC->Lecture
+   * Outputs the full formal version of each type of lesson, converting
+   * LEC to Lecture
    */
   public getTypeString(): string {
     switch (this.type) {

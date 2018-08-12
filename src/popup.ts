@@ -4,20 +4,23 @@ import * as SP from "./datatypes";
 import * as Listener from "./listeners";
 import * as Helper from "./helper";
 
-let count = 0;
-
 function startAllPollers() {
   clockPoll(); // this does not use interval as it is time sensitive
   calendarPoll();
   timetablePoll();
   spWifiPoll();
+  crowdPoll();
   setInterval(calendarPoll, 1000 * 60 * 5); // 5 minute calendar polling
   setInterval(timetablePoll, 1000 * 60 * 5); // 5 minute timetable polling
   setInterval(spWifiPoll, 1000 * 60 * 5); // 5 minute wifi polling
+  setInterval(crowdPoll, 1000 * 60 * 5); // 5 minute crowd polling
 }
 
 //#region Pollers
 
+/**
+ * Refreshes the clock display every 1 second
+ */
 function clockPoll() {
   $("#time").text(moment().format("HH:mm:ss"));
   setTimeout(clockPoll, 1000); // 1 second polling
@@ -70,15 +73,10 @@ function timetablePoll() {
   Helper.userIsAuthenticated(function(authenticated, token) {
     if (authenticated && token) {
       const currentDateString = moment().format("DDMMYY");
-      console.debug("[DEBUG] Requested for timetable with date: " + currentDateString);
-      const request = Helper.authenticatedRequest(
-        "GET",
-        "https://mobileapps.sp.edu.sg/SPMobileAPI/api/GetStudentTimetableByIdAndDate/" +
-        currentDateString, true, token);
+      const request = Helper.authenticatedRequest("GET", SP.URL_TIMETABLE + currentDateString, true, token);
       request.onloadend = function() {
         if (this.status === 200) {
-          console.debug("[DEBUG]: Requested for timetable with returned data:");
-          console.debug(this.responseText);
+          console.debug("[DEBUG]: Requested for timetable with returned data:" + this.responseText);
           if (this.responseText === SP.TIMETABLE_NO_LESSONS) {
             // No lessons
             $("#currentLesson").text("No Lessons");
@@ -160,25 +158,74 @@ function spWifiPoll() {
   request.send();
 }
 
+/**
+ * Checks for crowd data and displays it in the crowd tab
+ */
+function crowdPoll() {
+  Helper.userIsAuthenticated(function(authenticated, token) {
+    if (authenticated && token) {
+      const request = Helper.authenticatedRequest("GET", SP.URL_CROWD_CHECK, true, token);
+      request.onloadend = function() {
+        if (this.status === 200) {
+          const jsonArray = JSON.parse(this.responseText);
+
+          // Stage I: Validate all crowd entries
+          const crowdEntries: SP.CrowdInfo[] = [];
+          for (const entryString of jsonArray) {
+            const element: string = JSON.stringify(entryString);
+
+            const entryValid = SP.CrowdInfo.isValid(element);
+            if (entryValid) {
+              const entry = SP.CrowdInfo.fromJSON(element);
+              // Stage II: Insert all valid entries into array
+              crowdEntries.push(entry);
+            } else {
+              console.warn("[WARNING]: Crowd entry is invalid:");
+              console.warn(element);
+            }
+          }
+
+          // Stage III: Display it!
+          for (const entry of crowdEntries) {
+            const name = entry.getName();
+            const status = entry.getStatus();
+            let percentage = "&lt; 50%";
+            let color = "limegreen";
+            switch (status) {
+              case SP.CrowdLevel.Small:
+                color = "limegreen";
+                percentage = "&lt; 50%";
+                break;
+              case SP.CrowdLevel.Medium:
+                color = "gold";
+                percentage = "&lt; 75%";
+                break;
+              case SP.CrowdLevel.Large:
+                color = "crimson";
+                percentage = "&gt; 75%";
+                break;
+            }
+            $("#crowdTable > tbody:last-child").append(
+              `<tr>
+              <td>${name}</td>
+              <td><i class=\"fas fa-users\" style=\"color: ${color}\"></i> ${percentage}</td>
+            </tr>`);
+          }
+        } else {
+          // TODO: Error handling here
+        }
+      };
+      request.send();
+    } else {
+      console.error("[ERROR]: Token invalid, found during crowd fetch!");
+    }
+  });
+}
+
 //#endregion Pollers
 
 // Initialisation. This block runs when document is ready
 $(function() {
-
-  const queryInfo = {
-    active: true,
-    currentWindow: true,
-  };
-
-  chrome.tabs.query(queryInfo, function(tabs) {
-    // $("#url").text(tabs[0].url);
-    $("#time").text(moment().format("HH:mm:ss"));
-  });
-
-  chrome.browserAction.setBadgeText({ text: count.toString() });
-  $("#countUp").click(() => {
-    chrome.browserAction.setBadgeText({ text: (++count).toString() });
-  });
 
   // ==================== User authentication check ====================
   Helper.userIsAuthenticated(function(authenticated) {
@@ -223,11 +270,12 @@ $(function() {
   });
 
   $("#crowdTabButton").click(() => {
-    console.log("Crowd clicked");
     showTab("#crowdTab");
   });
 
 });
+
+//#region Helper functions
 
 /**
  * Shows a single tab and hides all other tabs
@@ -243,3 +291,5 @@ function showTab(name: string) {
     }
   }
 }
+
+//#endregion Helper functions

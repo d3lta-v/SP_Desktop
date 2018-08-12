@@ -137,11 +137,6 @@ hr {
     margin-bottom: -1rem;
 }
 
-.tabButton {
-    /* display: block; */
-    flex-grow: 1;
-}
-
 .tabIcon {
     font-size: 2rem;
     vertical-align: -0.3rem;
