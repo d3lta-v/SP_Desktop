@@ -102,7 +102,7 @@ function timetablePoll() {
                   console.debug(entry);
                 }
               } else {
-                console.warn("[WARNING]: Timetable entry is invalid:")
+                console.warn("[WARNING]: Timetable entry is invalid:");
                 console.warn(element);
               }
             }
@@ -118,11 +118,11 @@ function timetablePoll() {
             }
           }
         } else {
-          console.warn("[WARNING]: Failed to load timetable: ")
+          console.warn("[WARNING]: Failed to load timetable: ");
           console.warn(this.status);
           console.warn(this.responseText);
         }
-      }
+      };
       request.send();
     } else {
       console.error("[ERROR]: Token invalid, found during timetable retrieval!");

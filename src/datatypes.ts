@@ -5,10 +5,16 @@ import * as moment from "moment";
 export const ERROR_AUTH_INVALID_JSON = "Login server returned an invalid response. Please contact the developer.";
 export const ERROR_AUTH_INVALID_PASSWORD = "Incorrect password or username";
 
-export const TIMETABLE_NO_LESSONS = "[{\"abbreviation\":\"\",\"startTime\":\"\",\"endTime\":\"\",\"event\":null,\"type\":\"\",\"code\":\"\",\"location\":\"\"}]";
+export const TIMETABLE_NO_LESSONS =
+"[{\"abbreviation\":\"\",\"startTime\":\"\",\"endTime\":\"\",\"event\":null\
+,\"type\":\"\",\"code\":\"\",\"location\":\"\"}]";
 
-export const URL_ATS = "https://myats.sp.edu.sg/psc/cs90atstd/EMPLOYEE/HRMS/s/WEBLIB_A_ATS.ISCRIPT1.FieldFormula.IScript_SubmitAttendance";
-export const URL_ATS_LOGIN = "https://myats.sp.edu.sg/psc/cs90atstd/EMPLOYEE/HRMS/s/WEBLIB_A_ATS.ISCRIPT1.FieldFormula.IScript_SubmitAttendance?cmd=login&languageCd=ENG";
+export const URL_ATS =
+"https://myats.sp.edu.sg/psc/cs90atstd/EMPLOYEE/HRMS/s/WEBLIB_A_ATS.ISCRIPT1.\
+FieldFormula.IScript_SubmitAttendance";
+export const URL_ATS_LOGIN =
+"https://myats.sp.edu.sg/psc/cs90atstd/EMPLOYEE/HRMS/s/WEBLIB_A_ATS.ISCRIPT1.\
+FieldFormula.IScript_SubmitAttendance?cmd=login&languageCd=ENG";
 
 //#endregion Constant strings
 
@@ -91,7 +97,7 @@ export enum TimetableEntryType {
   Tutorial = "TUT",
 }
 
-// Typical entry: 
+// Typical entry:
 // {"abbreviation":"AMT","startTime":"13:00","endTime":"17:00","event":null,
 // "type":"LAB","code":"ET0720","location":"T12605"}
 
