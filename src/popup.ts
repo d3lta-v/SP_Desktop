@@ -1,8 +1,8 @@
-import * as moment from 'moment';
-import * as $ from 'jquery';
-import * as SP from './datatypes';
-import * as Listener from './listeners';
-import * as Helper from './helper';
+import * as moment from "moment";
+import * as $ from "jquery";
+import * as SP from "./datatypes";
+import * as Listener from "./listeners";
+import * as Helper from "./helper";
 
 let count = 0;
 
@@ -19,38 +19,38 @@ function startAllPollers() {
 //#region Pollers
 
 function clockPoll() {
-  $('#time').text(moment().format('HH:mm:ss'));
+  $("#time").text(moment().format("HH:mm:ss"));
   setTimeout(clockPoll, 1000); // 1 second polling
 }
 
 function calendarPoll() {
   // Get SP Academic Calendar and read from JSON
-  let request = new XMLHttpRequest();
-  request.onloadend = function () {
-    if (this.status == 200) {
-      // Get all objects 
-      let allCalendarEntries: SP.CalendarEntry[] = JSON.parse(this.responseText);
-      let relevantEntries: SP.CalendarEntry[] = [];
-      for (var i = 0; i < allCalendarEntries.length; i++) {
-        let startDate = Date.parse(allCalendarEntries[i].startTime);
-        let endDate = Date.parse(allCalendarEntries[i].endTime);
-        let currentDate = Date.now();
+  const request = new XMLHttpRequest();
+  request.onloadend = function() {
+    if (this.status === 200) {
+      // Get all objects
+      const allCalendarEntries: SP.CalendarEntry[] = JSON.parse(this.responseText);
+      const relevantEntries: SP.CalendarEntry[] = [];
+      for (const entry of allCalendarEntries) {
+        const startDate = Date.parse(entry.startTime);
+        const endDate = Date.parse(entry.endTime);
+        const currentDate = Date.now();
         if (currentDate > startDate && currentDate < endDate) {
-          relevantEntries.push(allCalendarEntries[i]);
+          relevantEntries.push(entry);
         }
       }
 
       // Set status
       if (relevantEntries.length > 0) {
-        let schoolStateString: string = "";
-        relevantEntries.forEach(element => {
+        let schoolStateString = "";
+        relevantEntries.forEach((element) => {
           schoolStateString += ", ";
           schoolStateString += element.summary;
         });
         schoolStateString = schoolStateString.substr(2, schoolStateString.length);   // Remove the first 2 characters
-        $('#currentStatus').text(schoolStateString);
+        $("#currentStatus").text(schoolStateString);
       } else {
-        $('#currentStatus').text("No School Events");
+        $("#currentStatus").text("No School Events");
       }
     }
 
@@ -65,34 +65,34 @@ function calendarPoll() {
  * Gets the timetable for today and checks if the user is attending a lesson
  */
 function timetablePoll() {
-  Helper.userIsAuthenticated(function (authenticated, token) {
+  Helper.userIsAuthenticated(function(authenticated, token) {
     if (authenticated && token) {
-      let currentDateString = moment().format('DDMMYY');
+      const currentDateString = moment().format("DDMMYY");
       console.debug("[DEBUG] Requested for timetable with date: " + currentDateString);
-      let request = Helper.authenticatedRequest(
-        "GET", 
-        "https://mobileapps.sp.edu.sg/SPMobileAPI/api/GetStudentTimetableByIdAndDate/" + 
+      const request = Helper.authenticatedRequest(
+        "GET",
+        "https://mobileapps.sp.edu.sg/SPMobileAPI/api/GetStudentTimetableByIdAndDate/" +
         currentDateString, true, token);
-      request.onloadend = function () {
-        if (this.status == 200) {
+      request.onloadend = function() {
+        if (this.status === 200) {
           console.debug("[DEBUG]: Requested for timetable with returned data:");
           console.debug(this.responseText);
-          if (this.responseText == SP.TIMETABLE_NO_LESSONS) {
+          if (this.responseText === SP.TIMETABLE_NO_LESSONS) {
             // No lessons
-            $('#currentLesson').text("No Lessons");
+            $("#currentLesson").text("No Lessons");
           } else {
-            let jsonArray = JSON.parse(this.responseText);
+            const jsonArray = JSON.parse(this.responseText);
 
             // Stage I: Validate all timetable entries
-            let timetableEntries: SP.TimetableEntry[] = [];
-            for (let i = 0; i < jsonArray.length; i++) {
-              const element: string = JSON.stringify(jsonArray[i]);
-              
-              let entryValid = SP.TimetableEntry.isValid(element);
+            const timetableEntries: SP.TimetableEntry[] = [];
+            for (const entryString of jsonArray) {
+              const element: string = JSON.stringify(entryString);
+
+              const entryValid = SP.TimetableEntry.isValid(element);
               if (entryValid) {
-                let entry = SP.TimetableEntry.fromJSON(element, currentDateString);
+                const entry = SP.TimetableEntry.fromJSON(element, currentDateString);
                 // Stage II: Insert all entries into array where it is currently happening
-                let currentDateTime = new Date();
+                const currentDateTime = new Date();
                 if (entry.getStartDateTime() < currentDateTime && entry.getEndDateTime() > currentDateTime) {
                   timetableEntries.push(entry);
                   console.debug("[DEBUG]: Lesson currently running: ");
@@ -109,12 +109,12 @@ function timetablePoll() {
 
             // Stage III: Display current lesson
             if (timetableEntries.length > 0) {
-              $('#currentLesson').text(
-                timetableEntries[0].getAbbreviation() + " " + 
-                timetableEntries[0].getTypeString() + " @ " + 
+              $("#currentLesson").text(
+                timetableEntries[0].getAbbreviation() + " " +
+                timetableEntries[0].getTypeString() + " @ " +
                 timetableEntries[0].getLocation());
             } else {
-              $('#currentLesson').text("No Lesson Currently");
+              $("#currentLesson").text("No Lesson Currently");
             }
           }
         } else {
@@ -134,31 +134,26 @@ function timetablePoll() {
  * Checks if the user is connected to SP Wi-Fi
  */
 function spWifiPoll() {
-  let request = new XMLHttpRequest();
-  request.onloadend = function () {
+  const request = new XMLHttpRequest();
+  request.onloadend = function() {
     let connected = false;
 
-    if (this.status == 200) {
+    if (this.status === 200) {
       // Check if request actually gets the real ATS page
-      if (this.responseURL.startsWith("https://myats.sp.edu.sg")) {
-        connected = true;
-      } else {
-        // Else, Wi-Fi is considered to be not connected
-        connected = false;
-      }
+      connected = this.responseURL.startsWith("https://myats.sp.edu.sg") ? true : false;
     }
 
     // Display connected state
     if (connected) {
       console.debug("[DEBUG]: Connected to SP wifi");
-      $('#wifiConnectedText').text("Connected to SP Wi-Fi");
-      $('#wifiLogo').css('color', '#33C3F0');
+      $("#wifiConnectedText").text("Connected to SP Wi-Fi");
+      $("#wifiLogo").css("color", "#33C3F0");
     } else {
       console.debug("[DEBUG]: Not connected to SP wifi");
-      $('#wifiConnectedText').text("Not connected to SP Wi-Fi");
-      $('#wifiLogo').css('color', '#bbb');
+      $("#wifiConnectedText").text("Not connected to SP Wi-Fi");
+      $("#wifiLogo").css("color", "#bbb");
     }
-  }
+  };
   request.open("GET", SP.URL_ATS, true);
   request.send();
 }
@@ -166,26 +161,26 @@ function spWifiPoll() {
 //#endregion Pollers
 
 // Initialisation for jQuery. This block runs when document is ready
-$(function () {
+$(function() {
   const queryInfo = {
     active: true,
-    currentWindow: true
+    currentWindow: true,
   };
 
-  chrome.tabs.query(queryInfo, function (tabs) {
-    // $('#url').text(tabs[0].url);
-    $('#time').text(moment().format('HH:mm:ss'));
+  chrome.tabs.query(queryInfo, function(tabs) {
+    // $("#url").text(tabs[0].url);
+    $("#time").text(moment().format("HH:mm:ss"));
   });
 
   chrome.browserAction.setBadgeText({ text: count.toString() });
-  $('#countUp').click(() => {
+  $("#countUp").click(() => {
     chrome.browserAction.setBadgeText({ text: (++count).toString() });
   });
 
-  // $('#changeBackground').click(()=>{
+  // $("#changeBackground").click(()=>{
   //   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
   //     chrome.tabs.sendMessage(tabs[0].id, {
-  //       color: '#555555'
+  //       color: "#555555"
   //     },
   //     function(msg) {
   //       console.log("result message:", msg);
@@ -194,19 +189,19 @@ $(function () {
   // });
 
   // First things first, check if user is authenticated
-  Helper.userIsAuthenticated(function (authenticated) {
-    $('#loading').show();
+  Helper.userIsAuthenticated(function(authenticated) {
+    $("#loading").show();
     if (authenticated) {
       // User is logged in, show main UI and initialise pollers
-      $('#main').show();
-      $('#auth').hide();
-      $('#loading').hide();
+      $("#main").show();
+      $("#auth").hide();
+      $("#loading").hide();
       startAllPollers();
     } else {
       // Not authenticated, display login UI only
-      $('#main').hide();
-      $('#auth').show();
-      $('#loading').hide();
+      $("#main").hide();
+      $("#auth").show();
+      $("#loading").hide();
 
       // If the old login token still exists in storage, purge it
       Helper.purgeOldToken();
@@ -214,8 +209,8 @@ $(function () {
   });
 
   // Initialise Login listener
-  $('#loginButton').click(function () {
-    Listener.loginListener(function () {
+  $("#loginButton").click(function() {
+    Listener.loginListener(function() {
       // Start up the pollers, as this lambda will only be called if
       // the login is successful
       startAllPollers();
@@ -223,7 +218,7 @@ $(function () {
   });
 
   // Setup ATS button listener
-  $('#atsButton').click(function () {
+  $("#atsButton").click(function() {
     Listener.atsButtonListener();
   });
 });

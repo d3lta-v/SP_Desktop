@@ -6,36 +6,36 @@
  * @param token The token WITHOUT the "Bearer " prefix
  */
 export function authenticatedRequest(method: string, url: string, async: boolean, token: string): XMLHttpRequest {
-  let request = new XMLHttpRequest();
+  const request = new XMLHttpRequest();
   request.open(method, url, async);
-  request.setRequestHeader('Authorization', 'Bearer ' + token);
+  request.setRequestHeader("Authorization", "Bearer " + token);
   return request;
 }
 
 /**
  * Checks if the current token stored in Chrome's storage is a valid
- * token (i.e. the user is already authenticated). 
+ * token (i.e. the user is already authenticated).
  * @param callback A lambda that returns the authenticated state through a parameter
  * @param token The session token, if the user is indeed authenticated. Else, it returns undefined
  */
 export function userIsAuthenticated(callback: (authenticated: boolean, token: string|undefined) => void) {
-  chrome.storage.local.get('user', function(result) {
+  chrome.storage.local.get("user", function(result) {
     // First round: checking for existence of token
-    if (result['user'] && result['user']['accessToken']) {
+    if (result.user && result.user.accessToken) {
       // Second round: token validity checking with a small API endpoint
-      let request = authenticatedRequest(
-        "POST", 
-        "https://mobileapps.sp.edu.sg/SPMobileAPI/api/CountUnreadItem", 
-        true, 
-        result['user']['accessToken']);
+      const request = authenticatedRequest(
+        "POST",
+        "https://mobileapps.sp.edu.sg/SPMobileAPI/api/CountUnreadItem",
+        true,
+        result.user.accessToken);
 
-      request.onloadend = function () {
-        if (this.status == 200) {
+      request.onloadend = function() {
+        if (this.status === 200) {
           // Token is valid, return callback with true
-          callback(true, result['user']['accessToken']);
+          callback(true, result.user.accessToken);
         }
-      }
-      
+      };
+
       request.send();
     } else {
      callback(false, undefined);
@@ -48,9 +48,9 @@ export function userIsAuthenticated(callback: (authenticated: boolean, token: st
  * @param callback A lambda that returns the user's token
  */
 export function getUserToken(callback: (token: string|undefined) => void) {
-  chrome.storage.local.get('user', function (result) {
-    if (result['user'] && result['user']['accessToken']) {
-      callback(result['user']['accessToken']);
+  chrome.storage.local.get("user", function(result) {
+    if (result.user && result.user.accessToken) {
+      callback(result.user.accessToken);
     } else {
       callback(undefined);
     }
@@ -61,22 +61,24 @@ export function getUserToken(callback: (token: string|undefined) => void) {
  * Purges the old user token from Chrome's internal storage
  */
 export function purgeOldToken() {
-  chrome.storage.local.remove('user');
+  chrome.storage.local.remove("user");
 }
 
 /**
  * Extremely fast and non-cryptographically secure hash function
- * Used to create short and sweet hashes for uniquely ID'ing strings
+ * Used to create short and sweet hashes for uniquely ID"ing strings
  * Based roughly on the Java String.hashCode() function
  * @param input Input string to hash
  */
 export function hash(input: string): number {
-  var hash = 0, i, chr;
-  if (input.length === 0) return hash;
+  let hashResult = 0;
+  let i;
+  let chr;
+  if (input.length === 0) return hashResult;
   for (i = 0; i < input.length; i++) {
     chr   = input.charCodeAt(i);
-    hash  = ((hash << 5) - hash) + chr;
-    hash |= 0; // Convert to 32bit integer
+    hashResult  = ((hashResult << 5) - hashResult) + chr;
+    hashResult |= 0; // Convert to 32bit integer
   }
-  return hash;
-};
+  return hashResult;
+}
