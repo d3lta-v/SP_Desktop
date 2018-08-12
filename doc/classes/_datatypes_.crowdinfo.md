@@ -36,7 +36,7 @@ A class that encapsulates information for a crowd at a certain location
 
 ⊕ **new CrowdInfo**(name: *`string`*, status: *[CrowdLevel](../enums/_datatypes_.crowdlevel.md)*): [CrowdInfo](_datatypes_.crowdinfo.md)
 
-*Defined in [datatypes.ts:281](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L281)*
+*Defined in [datatypes.ts:281](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L281)*
 
 **Parameters:**
 
@@ -57,7 +57,7 @@ ___
 
 **● name**: *`string`*
 
-*Defined in [datatypes.ts:285](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L285)*
+*Defined in [datatypes.ts:285](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L285)*
 
 Name of the location of the potentially crowded area
 
@@ -68,7 +68,7 @@ ___
 
 **● status**: *[CrowdLevel](../enums/_datatypes_.crowdlevel.md)*
 
-*Defined in [datatypes.ts:287](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L287)*
+*Defined in [datatypes.ts:287](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L287)*
 
 Crowd level of the potentially crowded area
 
@@ -82,7 +82,7 @@ ___
 
 ▸ **getName**(): `string`
 
-*Defined in [datatypes.ts:290](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L290)*
+*Defined in [datatypes.ts:290](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L290)*
 
 **Returns:** `string`
 
@@ -93,7 +93,7 @@ ___
 
 ▸ **getStatus**(): [CrowdLevel](../enums/_datatypes_.crowdlevel.md)
 
-*Defined in [datatypes.ts:294](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L294)*
+*Defined in [datatypes.ts:294](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L294)*
 
 **Returns:** [CrowdLevel](../enums/_datatypes_.crowdlevel.md)
 
@@ -104,7 +104,7 @@ ___
 
 ▸ **fromJSON**(json: *`string`*): [CrowdInfo](_datatypes_.crowdinfo.md)
 
-*Defined in [datatypes.ts:252](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L252)*
+*Defined in [datatypes.ts:252](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L252)*
 
 Converts a piece of JSON into an `CrowdInfo` object
 
@@ -123,7 +123,7 @@ ___
 
 ▸ **isValid**(json: *`string`*): `boolean`
 
-*Defined in [datatypes.ts:261](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L261)*
+*Defined in [datatypes.ts:261](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L261)*
 
 Validates a JSON string to be a CrowdInfo object
 

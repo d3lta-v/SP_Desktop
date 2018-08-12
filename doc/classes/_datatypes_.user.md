@@ -36,7 +36,7 @@ A class that encapsulates user information, such as the user's access token and 
 
 ⊕ **new User**(accessToken: *`string`*, name: *`string`*): [User](_datatypes_.user.md)
 
-*Defined in [datatypes.ts:69](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L69)*
+*Defined in [datatypes.ts:69](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L69)*
 
 **Parameters:**
 
@@ -57,7 +57,7 @@ ___
 
 **● accessToken**: *`string`*
 
-*Defined in [datatypes.ts:72](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L72)*
+*Defined in [datatypes.ts:72](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L72)*
 
 ___
 <a id="name"></a>
@@ -66,7 +66,7 @@ ___
 
 **● name**: *`string`*
 
-*Defined in [datatypes.ts:73](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L73)*
+*Defined in [datatypes.ts:73](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L73)*
 
 ___
 
@@ -78,7 +78,7 @@ ___
 
 ▸ **getAccessToken**(): `string`
 
-*Defined in [datatypes.ts:79](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L79)*
+*Defined in [datatypes.ts:79](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L79)*
 
 Retrieves the access token for this `User`
 
@@ -91,7 +91,7 @@ ___
 
 ▸ **getName**(): `string`
 
-*Defined in [datatypes.ts:83](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L83)*
+*Defined in [datatypes.ts:83](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L83)*
 
 **Returns:** `string`
 
@@ -102,7 +102,7 @@ ___
 
 ▸ **fromJSON**(json: *`string`*): [User](_datatypes_.user.md)
 
-*Defined in [datatypes.ts:52](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L52)*
+*Defined in [datatypes.ts:52](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L52)*
 
 Converts a piece of JSON into an `User` object
 
@@ -121,7 +121,7 @@ ___
 
 ▸ **isValid**(json: *`string`*): `boolean`
 
-*Defined in [datatypes.ts:61](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L61)*
+*Defined in [datatypes.ts:61](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L61)*
 
 Validates a JSON string to be a User object
 

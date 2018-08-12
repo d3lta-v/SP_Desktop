@@ -19,7 +19,7 @@
 
 ▸ **atsButtonListener**(): `void`
 
-*Defined in [listeners.ts:64](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/listeners.ts#L64)*
+*Defined in [listeners.ts:64](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/listeners.ts#L64)*
 
 A listener to attach to a button to trigger the ATS interface
 
@@ -32,7 +32,7 @@ ___
 
 ▸ **loginListener**(startPollers: *`function`*): `void`
 
-*Defined in [listeners.ts:8](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/listeners.ts#L8)*
+*Defined in [listeners.ts:8](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/listeners.ts#L8)*
 
 Hooks up to a .click() listener for the login event
 

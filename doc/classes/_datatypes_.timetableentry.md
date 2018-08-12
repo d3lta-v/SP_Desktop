@@ -45,7 +45,7 @@ A class that Encapsulates a single timetable entry and provides helper functions
 
 ⊕ **new TimetableEntry**(abbreviation: *`string`*, startTime: *`Date`*, endTime: *`Date`*, type: *[TimetableEntryType](../enums/_datatypes_.timetableentrytype.md)*, code: *`string`*, location: *`string`*): [TimetableEntry](_datatypes_.timetableentry.md)
 
-*Defined in [datatypes.ts:160](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L160)*
+*Defined in [datatypes.ts:160](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L160)*
 
 **Parameters:**
 
@@ -70,7 +70,7 @@ ___
 
 **● abbreviation**: *`string`*
 
-*Defined in [datatypes.ts:163](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L163)*
+*Defined in [datatypes.ts:163](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L163)*
 
 ___
 <a id="code"></a>
@@ -79,7 +79,7 @@ ___
 
 **● code**: *`string`*
 
-*Defined in [datatypes.ts:167](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L167)*
+*Defined in [datatypes.ts:167](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L167)*
 
 ___
 <a id="endtime"></a>
@@ -88,7 +88,7 @@ ___
 
 **● endTime**: *`Date`*
 
-*Defined in [datatypes.ts:165](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L165)*
+*Defined in [datatypes.ts:165](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L165)*
 
 ___
 <a id="location"></a>
@@ -97,7 +97,7 @@ ___
 
 **● location**: *`string`*
 
-*Defined in [datatypes.ts:168](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L168)*
+*Defined in [datatypes.ts:168](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L168)*
 
 ___
 <a id="starttime"></a>
@@ -106,7 +106,7 @@ ___
 
 **● startTime**: *`Date`*
 
-*Defined in [datatypes.ts:164](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L164)*
+*Defined in [datatypes.ts:164](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L164)*
 
 ___
 <a id="type"></a>
@@ -115,7 +115,7 @@ ___
 
 **● type**: *[TimetableEntryType](../enums/_datatypes_.timetableentrytype.md)*
 
-*Defined in [datatypes.ts:166](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L166)*
+*Defined in [datatypes.ts:166](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L166)*
 
 ___
 
@@ -127,7 +127,7 @@ ___
 
 ▸ **getAbbreviation**(): `string`
 
-*Defined in [datatypes.ts:174](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L174)*
+*Defined in [datatypes.ts:174](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L174)*
 
 Retrieves the abbreviation for the module (such as OOP, OPSYS)
 
@@ -140,7 +140,7 @@ ___
 
 ▸ **getEndDateTime**(): `Date`
 
-*Defined in [datatypes.ts:224](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L224)*
+*Defined in [datatypes.ts:224](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L224)*
 
 Gets the ending date and time in a `Date` object of this lesson
 
@@ -153,7 +153,7 @@ ___
 
 ▸ **getLocation**(): `string`
 
-*Defined in [datatypes.ts:210](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L210)*
+*Defined in [datatypes.ts:210](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L210)*
 
 Retrieves the location in which this lesson is taking place
 
@@ -166,7 +166,7 @@ ___
 
 ▸ **getModuleCode**(): `string`
 
-*Defined in [datatypes.ts:203](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L203)*
+*Defined in [datatypes.ts:203](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L203)*
 
 Retrieves the module code for this timetable entry
 
@@ -179,7 +179,7 @@ ___
 
 ▸ **getStartDateTime**(): `Date`
 
-*Defined in [datatypes.ts:217](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L217)*
+*Defined in [datatypes.ts:217](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L217)*
 
 Gets the starting date and time in a `Date` object of this lesson
 
@@ -192,7 +192,7 @@ ___
 
 ▸ **getType**(): `string`
 
-*Defined in [datatypes.ts:181](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L181)*
+*Defined in [datatypes.ts:181](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L181)*
 
 Retrieves the type of lesson, such as tutorial, lecture, or lab
 
@@ -205,7 +205,7 @@ ___
 
 ▸ **getTypeString**(): `string`
 
-*Defined in [datatypes.ts:189](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L189)*
+*Defined in [datatypes.ts:189](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L189)*
 
 Outputs the full formal version of each type of lesson, converting LEC to Lecture
 
@@ -218,7 +218,7 @@ ___
 
 ▸ **fromJSON**(json: *`string`*, dateString: *`string`*): [TimetableEntry](_datatypes_.timetableentry.md)
 
-*Defined in [datatypes.ts:119](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L119)*
+*Defined in [datatypes.ts:119](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L119)*
 
 Converts a piece of JSON into a `TimetableEntry`
 
@@ -238,7 +238,7 @@ ___
 
 ▸ **isValid**(json: *`string`*): `boolean`
 
-*Defined in [datatypes.ts:148](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/datatypes.ts#L148)*
+*Defined in [datatypes.ts:148](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L148)*
 
 Validates a JSON string to be a `TimetableEntry` object
 

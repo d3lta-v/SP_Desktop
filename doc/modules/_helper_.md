@@ -21,7 +21,7 @@
 
 ▸ **authenticatedRequest**(method: *`string`*, url: *`string`*, async: *`boolean`*, token: *`string`*): `XMLHttpRequest`
 
-*Defined in [helper.ts:8](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/helper.ts#L8)*
+*Defined in [helper.ts:8](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/helper.ts#L8)*
 
 Generates an authenticated request using an existing token
 
@@ -43,7 +43,7 @@ ___
 
 ▸ **getUserToken**(callback: *`function`*): `void`
 
-*Defined in [helper.ts:50](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/helper.ts#L50)*
+*Defined in [helper.ts:50](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/helper.ts#L50)*
 
 Retrieves the user's login token only and does not perform further validation
 
@@ -62,7 +62,7 @@ ___
 
 ▸ **purgeOldToken**(): `void`
 
-*Defined in [helper.ts:63](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/helper.ts#L63)*
+*Defined in [helper.ts:63](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/helper.ts#L63)*
 
 Purges the old user token from Chrome's internal storage
 
@@ -75,7 +75,7 @@ ___
 
 ▸ **userIsAuthenticated**(callback: *`function`*): `void`
 
-*Defined in [helper.ts:21](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/helper.ts#L21)*
+*Defined in [helper.ts:21](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/helper.ts#L21)*
 
 Checks if the current token stored in Chrome's storage is a valid token (i.e. the user is already authenticated).
 

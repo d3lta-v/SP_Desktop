@@ -24,7 +24,7 @@
 
 ▸ **calendarPoll**(): `void`
 
-*Defined in [popup.ts:36](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/popup.ts#L36)*
+*Defined in [popup.ts:36](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/popup.ts#L36)*
 
 Retrieves events from the SP Calendar API and displays it in the main tab, if there is an event right now
 
@@ -37,7 +37,7 @@ ___
 
 ▸ **clockPoll**(): `void`
 
-*Defined in [popup.ts:27](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/popup.ts#L27)*
+*Defined in [popup.ts:27](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/popup.ts#L27)*
 
 Refreshes the clock display every 1 second
 
@@ -50,7 +50,7 @@ ___
 
 ▸ **crowdPoll**(): `void`
 
-*Defined in [popup.ts:169](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/popup.ts#L169)*
+*Defined in [popup.ts:169](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/popup.ts#L169)*
 
 Checks for crowd data and displays it in the crowd tab
 
@@ -63,7 +63,7 @@ ___
 
 ▸ **showTab**(name: *`string`*): `void`
 
-*Defined in [popup.ts:289](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/popup.ts#L289)*
+*Defined in [popup.ts:289](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/popup.ts#L289)*
 
 Shows a single tab and hides all other tabs
 
@@ -82,7 +82,7 @@ ___
 
 ▸ **spWifiPoll**(): `void`
 
-*Defined in [popup.ts:141](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/popup.ts#L141)*
+*Defined in [popup.ts:141](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/popup.ts#L141)*
 
 Checks if the user is connected to SP Wi-Fi and displays the connectivity status
 
@@ -95,7 +95,7 @@ ___
 
 ▸ **startAllPollers**(): `void`
 
-*Defined in [popup.ts:10](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/popup.ts#L10)*
+*Defined in [popup.ts:10](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/popup.ts#L10)*
 
 Starts all of the pollers, basically functions that needs to run periodically
 
@@ -108,7 +108,7 @@ ___
 
 ▸ **timetablePoll**(): `void`
 
-*Defined in [popup.ts:77](https://github.com/sammy0025/SP_Desktop/blob/fa6190c/src/popup.ts#L77)*
+*Defined in [popup.ts:77](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/popup.ts#L77)*
 
 Gets the timetable for today and checks if the user is attending a lesson. Displays the lesson if any in the main tab
 
