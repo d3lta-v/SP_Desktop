@@ -25,8 +25,10 @@ export function loginListener(startPollers: () => void) {
           }, () => {
             console.debug("[DEBUG]: Saved username and password for future");
             // Hide the login dialog and show the main UI
-            $("#auth").hide();
             $("#main").show();
+            $("#tabBar").show();
+            $("#auth").hide();
+            $("#loading").hide();
             // Start pollers by calling back the main file (popup.ts)
             startPollers();
           });
