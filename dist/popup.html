@@ -1,7 +1,7 @@
 <!-- 
   popup.html
   Main file containing the layout of the entire popup window of the Chrome extension
-  HTML validated with no errors or warnings as per https://validator.w3.org/
+  HTML validated with no errors as per https://validator.w3.org/
  -->
 <!-- <ul>
             <li>Current URL: <span id="url"></span></li>
@@ -78,7 +78,7 @@
 
       <hr />
 
-      <!-- Second row:  -->
+      <!-- Second row: ATS -->
       <div class="row" id="ats">
         <h5 id="wifiConnectedContainer"><i class="fas fa-wifi" id="wifiLogo" style="color: #bbb"></i><span id="wifiConnectedText">Not connected to SP Wi-Fi</span></h5>
         <button class="button-primary u-full-width" id="atsButton">Login to ATS</button>
@@ -87,7 +87,7 @@
     </div>
 
     <!-- Crowd Tab: Shows all the crowds in different SP food courts -->
-    <div id="crowdTab">
+    <div id="crowdTab" hidden>
       <h4 style="margin-bottom: 0rem">Crowd Watch</h4>
       <table class="u-full-width" style="margin-bottom: 0.5rem">
         <thead>
@@ -99,14 +99,21 @@
         <tbody>
           <tr>
             <td>Food Court 1</td>
-            <td><i class="fas fa-users" style="color: green"></i> < 50%</td>
+            <td><i class="fas fa-users" style="color: green"></i> &lt; 50%</td>
           </tr>
           <tr>
             <td>Food Court 2</td>
-            <td><i class="fas fa-users" style="color: green"></i> < 50%</td>
+            <td><i class="fas fa-users" style="color: green"></i> &lt; 50%</td>
           </tr>
         </tbody>
       </table>
+    </div>
+
+    <div id="tabBar" hidden>
+      <div class="row">
+        <button id="homeTabButton" class="tabButton"><i class="fas fa-home tabIcon" style="color: #33C3F0"></i></button>
+        <button id="crowdTabButton" class="tabButton"><i class="fas fa-users tabIcon" style="color: #33C3F0"></i></button>
+      </div>
     </div>
 
   </div>

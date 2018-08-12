@@ -131,3 +131,18 @@ hr {
     margin-top: 0.75rem;
     margin-bottom: 0rem;
 }
+
+#tabBar {
+    margin-top: 1.5rem;
+    margin-bottom: -1rem;
+}
+
+.tabButton {
+    /* display: block; */
+    flex-grow: 1;
+}
+
+.tabIcon {
+    font-size: 2rem;
+    vertical-align: -0.3rem;
+}

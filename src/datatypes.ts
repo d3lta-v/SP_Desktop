@@ -212,3 +212,68 @@ export class TimetableEntry {
 }
 
 //#endregion Timetable
+
+//#region Crowd
+
+export enum CrowdLevel {
+  Small = "Small",
+  Medium = "Medium",
+  Large = "Large",
+}
+
+export class CrowdInfo {
+
+  /**
+   * Converts a piece of JSON into an `CrowdInfo` object
+   * @param json The JSON to convert to an `CrowdInfo` object
+   * @param dateString The string of the date, in DDMMYY format
+   */
+  public static fromJSON(json: string): CrowdInfo {
+    const rawJSON = JSON.parse(json);
+    return new CrowdInfo(rawJSON.name, rawJSON.status);
+  }
+
+  /**
+   * Validates a JSON string to be a CrowdInfo object
+   * @param json The JSON string to validate
+   */
+  public static isValid(json: string): boolean {
+    const unvalidatedJSON = JSON.parse(json);
+    let valid = false;
+    let statusValid = false;
+
+    unvalidatedJSON.hasOwnProperty("status") ? valid = true : valid = false;
+    unvalidatedJSON.hasOwnProperty("name") ? valid = true : valid = false;
+
+    // Check if status has correct states, such as Small, Medium or Large
+    if (unvalidatedJSON.status === "Small") {
+      statusValid = true;
+    }
+    if (unvalidatedJSON.status === "Medium") {
+      statusValid = true;
+    }
+    if (unvalidatedJSON.status === "Large") {
+      statusValid = true;
+    }
+
+    return valid && statusValid;
+  }
+
+  constructor(
+    /** Name of the location of the potentially crowded area */
+    private name: string,
+    /** Crowd level of the potentially crowded area */
+    private status: CrowdLevel,
+  ) { }
+
+  public getName(): string {
+    return this.name;
+  }
+
+  public getStatus(): CrowdLevel {
+    return this.status;
+  }
+
+}
+
+//#endregion Crowd

@@ -162,8 +162,9 @@ function spWifiPoll() {
 
 //#endregion Pollers
 
-// Initialisation for jQuery. This block runs when document is ready
+// Initialisation. This block runs when document is ready
 $(function() {
+
   const queryInfo = {
     active: true,
     currentWindow: true,
@@ -179,29 +180,20 @@ $(function() {
     chrome.browserAction.setBadgeText({ text: (++count).toString() });
   });
 
-  // $("#changeBackground").click(()=>{
-  //   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-  //     chrome.tabs.sendMessage(tabs[0].id, {
-  //       color: "#555555"
-  //     },
-  //     function(msg) {
-  //       console.log("result message:", msg);
-  //     });
-  //   });
-  // });
-
-  // First things first, check if user is authenticated
+  // ==================== User authentication check ====================
   Helper.userIsAuthenticated(function(authenticated) {
     $("#loading").show();
     if (authenticated) {
       // User is logged in, show main UI and initialise pollers
       $("#main").show();
+      $("#tabBar").show();
       $("#auth").hide();
       $("#loading").hide();
       startAllPollers();
     } else {
       // Not authenticated, display login UI only
       $("#main").hide();
+      $("#tabBar").hide();
       $("#auth").show();
       $("#loading").hide();
 
@@ -210,8 +202,9 @@ $(function() {
     }
   });
 
+  // =========================== Listeners ============================
   // Initialise Login listener
-  $("#loginButton").click(function() {
+  $("#loginButton").click(() => {
     Listener.loginListener(function() {
       // Start up the pollers, as this lambda will only be called if
       // the login is successful
@@ -220,7 +213,33 @@ $(function() {
   });
 
   // Setup ATS button listener
-  $("#atsButton").click(function() {
+  $("#atsButton").click(() => {
     Listener.atsButtonListener();
   });
+
+  // ========================= Tab Listeners =========================
+  $("#homeTabButton").click(() => {
+    showTab("#main");
+  });
+
+  $("#crowdTabButton").click(() => {
+    console.log("Crowd clicked");
+    showTab("#crowdTab");
+  });
+
 });
+
+/**
+ * Shows a single tab and hides all other tabs
+ * @param name Name of the single tab to show
+ */
+function showTab(name: string) {
+  const allTabNames = ["#main", "#crowdTab"];
+  for (const tabName of allTabNames) {
+    if (name === tabName) {
+      $(tabName).show();
+    } else {
+      $(tabName).hide();
+    }
+  }
+}
