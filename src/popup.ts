@@ -23,8 +23,10 @@ function clockPoll() {
   setTimeout(clockPoll, 1000); // 1 second polling
 }
 
+/**
+ * Retrieves data from the SP Calendar API and displays it
+ */
 function calendarPoll() {
-  // Get SP Academic Calendar and read from JSON
   const request = new XMLHttpRequest();
   request.onloadend = function() {
     if (this.status === 200) {
@@ -131,7 +133,7 @@ function timetablePoll() {
 }
 
 /**
- * Checks if the user is connected to SP Wi-Fi
+ * Checks if the user is connected to SP Wi-Fi and displays the connectivity status
  */
 function spWifiPoll() {
   const request = new XMLHttpRequest();
