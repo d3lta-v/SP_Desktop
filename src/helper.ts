@@ -63,3 +63,10 @@ export function getUserToken(callback: (token: string|undefined) => void) {
 export function purgeOldToken() {
   chrome.storage.local.remove("user");
 }
+
+/**
+ * Logs the user out of this extension by deleting `user`, `username` and `password`
+ */
+export function userLogout() {
+  chrome.storage.local.remove(["user", "username", "password"]);
+}
