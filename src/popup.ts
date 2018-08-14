@@ -211,7 +211,7 @@ function crowdPoll() {
                 break;
             }
             $("#crowdTable > tbody:last-child").append(
-              `<tr>
+            `<tr>
               <td>${name}</td>
               <td><i class=\"fas fa-users\" style=\"color: ${color}\"></i> ${percentage}</td>
             </tr>`);
