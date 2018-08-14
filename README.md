@@ -27,6 +27,7 @@ Now, with the caveats of this extension out of the way, let's talk about its maj
 * Current Lesson indicator
 * Current school period/special event indicator
 * Automatic ATS login button (log into ATS without a password)
+* Crowd watch
 
 ## Planned features
 Just a scratchpad here to help in guiding newborn features:
@@ -40,7 +41,6 @@ Just a scratchpad here to help in guiding newborn features:
 
 ### Feature set
 
-* Crowd watch
 * Timetable listing for the next 5 days
 * Exam listing
 * Upcoming exam in home view
