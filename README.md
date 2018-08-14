@@ -57,7 +57,7 @@ Anybody is welcome to contribute to this repository! But first, let's talk envir
 * Line endings: LF
 * Language: TypeScript 2.9.2
 * Build environment: Node/NPM with webpack
-* Initial setup: `node install` in the terminal
+* Initial setup: `npm install` in the terminal
 
 ### Folder structure:
 
