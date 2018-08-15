@@ -10,5 +10,6 @@
     ],
     "files.associations": {
         "bitset": "cpp"
-    }
+    },
+    "files.eol": "\n"
 }
