@@ -3,6 +3,7 @@ import * as moment from "moment";
 //#region Constant strings
 
 export const ERROR_AUTH_INVALID_JSON = "Login server returned an invalid response. Please contact the developer.";
+export const ERROR_AUTH_INVALID_CODE = "Login server returned an invalid code. Please contact the developer.";
 export const ERROR_AUTH_INVALID_PASSWORD = "Incorrect password or username";
 
 export const TIMETABLE_NO_LESSONS =
