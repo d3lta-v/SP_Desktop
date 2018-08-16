@@ -136,7 +136,7 @@ export function userLogout() {
  * **WARNING**: This function will delete the user from local storage if the server returns
  * an authentication failure message.
  */
-export function rekeyUser() {
+export function rekeyUser(completed: (success: boolean) => void) {
   chrome.storage.local.get(["username", "password"], function(result) {
     // Retrieve username and password
     const username = result.username as string;
@@ -145,10 +145,13 @@ export function rekeyUser() {
       // Re-attempt login
       userLogin(username, password, () => {
         console.debug("[DEBUG]: Rekeying succeeded ");
+        completed(true);
       }, (error) => {
         console.debug("[DEBUG]: Rekeying failed with error " + error);
+        completed(false);
       });
     } else {
+      completed(false);
       // Log the user out by force since there isn't even a username and password present
       userLogout();
       window.close();
