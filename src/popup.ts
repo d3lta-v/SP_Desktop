@@ -45,14 +45,19 @@ $(function() {
       $("#loading").hide();
       startAllPollers();
     } else {
-      // Not authenticated, display login UI only
-      $("#main").hide();
-      $("#tabBar").hide();
-      $("#auth").show();
-      $("#loading").hide();
+      // Attempt rekeying if user is already logged in
+      Helper.rekeyUser((success) => {
+        if (!success) {
+          // Rekeying failed, display login UI only
+          $("#main").hide();
+          $("#tabBar").hide();
+          $("#auth").show();
+          $("#loading").hide();
 
-      // If the old login token still exists in storage, purge it
-      Helper.purgeOldToken();
+          // If the old login token still exists in storage, purge it
+          Helper.purgeOldToken();
+        }
+      });
     }
   });
 

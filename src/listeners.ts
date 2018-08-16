@@ -3,9 +3,9 @@ import * as Helper from "./helper";
 
 /**
  * Hooks up to a .click() listener for the login event
- * @param startPollers A callback for the main popup.ts to initialise recurring events (i.e. pollers)
+ * @param finished A callback for the main popup.ts to initialise recurring events (i.e. pollers)
  */
-export function loginListener(startPollers: () => void) {
+export function loginListener(finished: () => void) {
   Helper.userLogin($("#username").val() as string, $("#password").val() as string, () => {
     // Hide the login dialog and show the main UI
     $("#main").show();
@@ -13,7 +13,7 @@ export function loginListener(startPollers: () => void) {
     $("#auth").hide();
     $("#loading").hide();
     // Start pollers by calling back the main file (popup.ts)
-    startPollers();
+    finished();
   }, (error) => {
     // Display error
     $("#authError").show();
