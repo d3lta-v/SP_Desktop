@@ -118,7 +118,6 @@ function highlightTabButton(name: string) {
   for (const buttonName of allButtonNames) {
     const button = $(buttonName);
     const buttonIcon = button.find("i");
-    console.log(buttonIcon);
     if (name === buttonName) {
       button.addClass("button-primary"); // Highlight that button
       buttonIcon.css({color: "#fff"});
