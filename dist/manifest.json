@@ -31,7 +31,5 @@
     "https://mobileapps.sp.edu.sg/*",
     "https://myats.sp.edu.sg/*",
     "https://publicsas2.sp.edu.sg/*"
-  ],
-
-  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+  ]
 }
