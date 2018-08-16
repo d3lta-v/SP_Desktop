@@ -80,6 +80,10 @@ $(function() {
     showTab("#crowdTab");
   });
 
+  $("#timetableTabButton").click(() => {
+    showTab("#timetableTab");
+  });
+
 });
 
 //#region Helper functions
@@ -89,7 +93,7 @@ $(function() {
  * @param name Name of the single tab to show
  */
 function showTab(name: string) {
-  const allTabNames = ["#main", "#crowdTab"];
+  const allTabNames = ["#main", "#crowdTab", "#timetableTab"];
   for (const tabName of allTabNames) {
     if (name === tabName) {
       $(tabName).show();
