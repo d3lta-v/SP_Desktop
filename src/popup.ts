@@ -74,16 +74,21 @@ $(function() {
   // ========================= Tab Listeners =========================
   $("#homeTabButton").click(() => {
     showTab("#main");
+    highlightTabButton("#homeTabButton");
   });
 
   $("#crowdTabButton").click(() => {
     showTab("#crowdTab");
+    highlightTabButton("#crowdTabButton");
   });
 
   $("#timetableTabButton").click(() => {
     showTab("#timetableTab");
+    highlightTabButton("#timetableTabButton");
   });
 
+  // Highlight the Home Tab button so it looks natural
+  highlightTabButton("#homeTabButton");
 });
 
 //#region Helper functions
@@ -99,6 +104,30 @@ function showTab(name: string) {
       $(tabName).show();
     } else {
       $(tabName).hide();
+    }
+  }
+}
+
+/**
+ * Highlights a single tab button out of all the other tab buttons
+ * @param name Name of the tab button to highlight
+ */
+function highlightTabButton(name: string) {
+  // Highlight the correct button
+  const allButtonNames = ["#homeTabButton", "#crowdTabButton", "#timetableTabButton"];
+  for (const buttonName of allButtonNames) {
+    const button = $(buttonName);
+    const buttonIcon = button.find("i");
+    console.log(buttonIcon);
+    if (name === buttonName) {
+      button.addClass("button-primary"); // Highlight that button
+      buttonIcon.css({color: "#fff"});
+    } else {
+      // Change those buttons to white
+      if (button.hasClass("button-primary")) {
+        button.removeClass("button-primary");
+        buttonIcon.css({color: "#33C3F0"});
+      }
     }
   }
 }
