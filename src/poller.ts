@@ -26,6 +26,17 @@ export function calendarPoll() {
 
       // Set status
       if (relevantEntries.length > 0) {
+        // Sort entries by importance (using colorId)
+        relevantEntries.sort((a, b) => {
+          if (a.colorId > b.colorId) {
+            return 1;
+          } else if (a.colorId < b.colorId) {
+            return -1;
+          } else {
+            return 0;
+          }
+        });
+
         let schoolStateString = "";
         relevantEntries.forEach((element) => {
           schoolStateString += ", ";
