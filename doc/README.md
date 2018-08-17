@@ -35,6 +35,7 @@ Features/Implementation
 *   Current Lesson indicator
 *   Current school period/special event indicator
 *   Automatic ATS login button (log into ATS without a password)
+*   Crowd watch
 
 Planned features
 ----------------
@@ -50,7 +51,6 @@ Just a scratchpad here to help in guiding newborn features:
 
 ### Feature set
 
-*   Crowd watch
 *   Timetable listing for the next 5 days
 *   Exam listing
 *   Upcoming exam in home view
@@ -69,7 +69,7 @@ Anybody is welcome to contribute to this repository! But first, let's talk envir
 *   Line endings: LF
 *   Language: TypeScript 2.9.2
 *   Build environment: Node/NPM with webpack
-*   Initial setup: `node install` in the terminal
+*   Initial setup: `npm install` in the terminal
 
 ### Folder structure:
 
@@ -87,6 +87,7 @@ Anybody is welcome to contribute to this repository! But first, let's talk envir
 * ["helper"](modules/_helper_.md)
 * ["listeners"](modules/_listeners_.md)
 * ["options"](modules/_options_.md)
+* ["poller"](modules/_poller_.md)
 * ["popup"](modules/_popup_.md)
 * ["post"](modules/_post_.md)
 

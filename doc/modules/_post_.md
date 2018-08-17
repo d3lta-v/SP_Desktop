@@ -14,11 +14,11 @@
 
 <a id="onmessagehandler"></a>
 
-###  onMessageHandler
+### `<Let>` onMessageHandler
 
 ▸ **onMessageHandler**(message: *`any`*): `void`
 
-*Defined in [post.ts:7](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/post.ts#L7)*
+*Defined in [post.ts:7](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/post.ts#L7)*
 
 Message handler to redirect a user to a webpage with a POST request This method works on the principle of dynamically generating a
 

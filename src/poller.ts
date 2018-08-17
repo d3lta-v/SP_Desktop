@@ -118,6 +118,17 @@ export function spWifiPoll() {
     if (this.status === 200) {
       // Check if request actually gets the real ATS page
       connected = this.responseURL.startsWith("https://myats.sp.edu.sg") ? true : false;
+    } else if (this.status === 401) {
+      // User is not authenticated, attempt rekey
+
+      // NOTE: don't bother trying to rekey with other functions, as all these
+      // functions are run in parallel, so doing rekeying from one would do
+      Helper.rekeyUser((success) => {
+        if (!success) {
+          // If rekey failed
+          Helper.showLoginUIAndPurgeToken();
+        }
+      });
     }
 
     // Display connected state
@@ -157,7 +168,7 @@ export function crowdPoll() {
               // Stage II: Insert all valid entries into array
               crowdEntries.push(entry);
             } else {
-              console.warn("[WARNING]: Crowd entry is invalid:");
+              console.warn("[WARNING]: Crowd JSON is invalid:");
               console.warn(element);
             }
           }

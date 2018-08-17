@@ -46,7 +46,8 @@ export function userIsAuthenticated(callback: (authenticated: boolean, token: st
 }
 
 /**
- * Retrieves the user's login token only and does not perform further validation
+ * Retrieves the user's login token only and does not perform further
+ * validation
  * @param callback A lambda that returns the user's token
  */
 export function getUserToken(callback: (token: string|undefined) => void) {
@@ -57,13 +58,6 @@ export function getUserToken(callback: (token: string|undefined) => void) {
       callback(undefined);
     }
   });
-}
-
-/**
- * Purges the old user token from Chrome's internal storage
- */
-export function purgeOldToken() {
-  chrome.storage.local.remove("user");
 }
 
 /**
@@ -124,17 +118,18 @@ export function userLogin(username: string,
 }
 
 /**
- * Logs the user out of this extension by deleting `user`, `username` and `password`
+ * Logs the user out of this extension by deleting `user`, `username` and
+ * `password`
  */
 export function userLogout() {
   chrome.storage.local.remove(["user", "username", "password"]);
 }
 
 /**
- * Rekey the user, or in other words, retrieve a fresh session token from the server using
- * the user's original credentials.
- * **WARNING**: This function will delete the user from local storage if the server returns
- * an authentication failure message.
+ * Rekey the user, or in other words, retrieve a fresh session token from the
+ * server using the user's original credentials.
+ * **WARNING**: This function will delete the user from local storage if the
+ * server returns an authentication failure message.
  */
 export function rekeyUser(completed: (success: boolean) => void) {
   chrome.storage.local.get(["username", "password"], function(result) {
@@ -157,4 +152,18 @@ export function rekeyUser(completed: (success: boolean) => void) {
       window.close();
     }
   });
+}
+
+/**
+ * Shows the login UI and purges the old user info. Meant to called when the
+ * program detects that user is unauthorised due to various reasons
+ */
+export function showLoginUIAndPurgeToken() {
+  $("#main").hide();
+  $("#tabBar").hide();
+  $("#auth").show();
+  $("#loading").hide();
+
+  // If the user info is still in storage, delete it
+  userLogout();
 }

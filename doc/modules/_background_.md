@@ -18,7 +18,7 @@
 
 ▸ **postData**(url: *`string`*, data: *`any`*): `void`
 
-*Defined in [background.ts:9](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/background.ts#L9)*
+*Defined in [background.ts:10](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/background.ts#L10)*
 
 Performs a POST request on a new browser tab with parameters
 

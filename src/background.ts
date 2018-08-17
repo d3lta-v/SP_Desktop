@@ -1,5 +1,6 @@
 // import * as moment from "moment";
 import * as SP from "./datatypes";
+import * as Helper from "./helper";
 
 /**
  * Performs a POST request on a new browser tab with parameters
@@ -29,8 +30,9 @@ function postData(url: string, data: any) {
   );
 }
 
-// Background.ts NEEDS to listen for a specific message for it to redirect user to a page,
-// as calling it direct from popup.ts would not work (since popup closes the instant a new tab is instantiated)
+// Background.ts NEEDS to listen for a specific message for it to redirect user
+// to a page, as calling it direct from popup.ts would not work (since popup
+// closes the instant a new tab is instantiated)
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request.type === "ats-listener") {
@@ -41,10 +43,14 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
           userid: result.username,
           pwd: result.password });
       } else {
-        // callback(undefined);
+        // If we can't find username and password, we'll just link the user to
+        // the ATS login page while logging the user out from the extension.
+        // This should not actually happen.
+        console.warn("[WARNING]: Unauthenticated user attempted ATS!");
         chrome.tabs.create({ url: SP.URL_ATS });
 
-        // TODO: Log user out by deleting token, username and password
+        // Log user out by deleting token, username and password
+        Helper.userLogout();
       }
     });
   }

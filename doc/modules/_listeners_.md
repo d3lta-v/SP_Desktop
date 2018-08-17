@@ -19,7 +19,7 @@
 
 ▸ **atsButtonListener**(): `void`
 
-*Defined in [listeners.ts:64](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/listeners.ts#L64)*
+*Defined in [listeners.ts:27](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/listeners.ts#L27)*
 
 A listener to attach to a button to trigger the ATS interface
 
@@ -30,9 +30,9 @@ ___
 
 ###  loginListener
 
-▸ **loginListener**(startPollers: *`function`*): `void`
+▸ **loginListener**(finished: *`function`*): `void`
 
-*Defined in [listeners.ts:8](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/listeners.ts#L8)*
+*Defined in [listeners.ts:8](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/listeners.ts#L8)*
 
 Hooks up to a .click() listener for the login event
 
@@ -40,7 +40,7 @@ Hooks up to a .click() listener for the login event
 
 | Param | Type | Description |
 | ------ | ------ | ------ |
-| startPollers | `function` |  A callback for the main popup.ts to initialise recurring events (i.e. pollers) |
+| finished | `function` |  A callback for the main popup.ts to initialise recurring events (i.e. pollers) |
 
 **Returns:** `void`
 

@@ -22,7 +22,7 @@ An enumeration of the different types of timetable events, such as a lecture, la
 
 **Lab**:  = "LAB"
 
-*Defined in [datatypes.ts:104](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L104)*
+*Defined in [datatypes.ts:105](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/datatypes.ts#L105)*
 
 ___
 <a id="lecture"></a>
@@ -31,7 +31,7 @@ ___
 
 **Lecture**:  = "LEC"
 
-*Defined in [datatypes.ts:105](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L105)*
+*Defined in [datatypes.ts:106](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/datatypes.ts#L106)*
 
 ___
 <a id="tutorial"></a>
@@ -40,7 +40,7 @@ ___
 
 **Tutorial**:  = "TUT"
 
-*Defined in [datatypes.ts:106](https://github.com/sammy0025/SP_Desktop/blob/e05e746/src/datatypes.ts#L106)*
+*Defined in [datatypes.ts:107](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/datatypes.ts#L107)*
 
 ___
 
