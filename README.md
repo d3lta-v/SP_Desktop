@@ -6,7 +6,6 @@ When someone mentions "mission control", massive projectors and data screens spr
 ## Caveats
 Before we go any further, it is imperative to highlight the shortcomings of this application such that the end user is fully aware of what it can and cannot do.
 
-* ATS state detection is NOT functional
 * The username and password are stored locally in Chrome to facilitate automatic ATS login (in the same way the SP app does it)
 * Loads every time the popup is clicked. While every load cycle incurs <10kb of data transfer, with every effort to slim down the payload, this is still seen as a deficiency waiting to be patched in a newer release
 * No automatic reload if connection fails. You may have to reopen the popup to reload contents
@@ -16,8 +15,8 @@ A **VERY** critical deficit of this application is the fact that it relies on an
 ## Features/Plus Points
 Now, with the caveats of this extension out of the way, let's talk about its major plus points:
 
-* Lightweight: with the most bare bones CSS and HTML code possible with no bulky frameworks like React or Angular, the entire extension is extremely lightweight
-* Did I say lightweight?: With every data transfer being less than 10kb, this app aims to be a responsible citizen of the school network by avoiding excessive data transfer as much as possible
+* Lightweight: with the most bare bones CSS and HTML code possible with no bulky frameworks like React or Angular, the entire extension is extremely lightweight with DOM load times of less than 200ms
+* Did I say lightweight?: With every data transfer being less than 20kb, this app aims to be a responsible citizen of the school network by avoiding excessive data transfer as much as possible
 * Easy on the eyes: "Functional Design" is a key part of this app. The entire application is kept minimalistic, stripped of all distraction. Just like how a mission control should be
 
 ## Features/Implementation
@@ -46,6 +45,7 @@ Just a scratchpad here to help in guiding newborn features:
 * Upcoming exam in home view
 * Upcoming lesson in home view
 * MIKE-SP clone
+* Cached timetable (both normal and exam)
 
 ## Contributing
 Anybody is welcome to contribute to this repository! But first, let's talk environments so that you, the aspiring developer, know what's going on:
@@ -55,13 +55,17 @@ Anybody is welcome to contribute to this repository! But first, let's talk envir
 * Original OS environment: macOS High Sierra
 * Text Editor/IDE: Visual Studio Code with TypeScript support
 * Line endings: LF
-* Language: TypeScript 2.9.2
+* Language: TypeScript 2.9.2 
 * Build environment: Node/NPM with webpack
-* Initial setup: `npm install` in the terminal
+* Initial setup: `npm install` in the terminal to generate the `node_modules` folder
 
 ### Folder structure:
 
 * `src/`: Source files in TypeScript
+    * `popup.ts`: The main program handling the popup view
+    * `helper.ts`: Helper functions, mainly regarding user and network operations
+    * `background.ts`: Background event listeners, crucial to ATS function
+    * `poller.ts`: All the pollers in one place. A poller is a function that runs repeatedly
 * `dist/`: Unpacked version of the Chrome extension, all HTML and CSS goes here and you should edit those files direct in here
 * `.vscode/`: Visual Studio Code specific settings
 * `webpack/`: Webpack compilation settings
