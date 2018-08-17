@@ -67,5 +67,7 @@ Anybody is welcome to contribute to this repository! But first, let's talk envir
     * `background.ts`: Background event listeners, crucial to ATS function
     * `poller.ts`: All the pollers in one place. A poller is a function that runs repeatedly
 * `dist/`: Unpacked version of the Chrome extension, all HTML and CSS goes here and you should edit those files direct in here
+    * `popup.html`: The UI for the popup
+    * `options.html`: The UI for extension settings/options
 * `.vscode/`: Visual Studio Code specific settings
 * `webpack/`: Webpack compilation settings
