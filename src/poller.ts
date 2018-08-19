@@ -73,6 +73,7 @@ export function timetablePoll() {
 
             // Stage I: Validate all timetable entries
             const timetableEntries: SP.TimetableEntry[] = [];
+            let currentLesson: SP.TimetableEntry | undefined;
             for (const entryString of jsonArray) {
               const element: string = JSON.stringify(entryString);
 
@@ -82,13 +83,15 @@ export function timetablePoll() {
                 // Stage II: Insert all entries into array where it is currently happening
                 const currentDateTime = new Date();
                 if (entry.getStartDateTime() < currentDateTime && entry.getEndDateTime() > currentDateTime) {
-                  timetableEntries.push(entry);
+                  // timetableEntries.push(entry);
+                  currentLesson = entry;
                   console.debug("[DEBUG]: Lesson currently running: ");
                   console.debug(entry);
                 } else {
                   console.debug("[DEBUG]: Lesson not running: ");
                   console.debug(entry);
                 }
+                timetableEntries.push(entry);
               } else {
                 console.warn("[WARNING]: Timetable entry is invalid:");
                 console.warn(element);
@@ -96,14 +99,17 @@ export function timetablePoll() {
             }
 
             // Stage III: Display current lesson
-            if (timetableEntries.length > 0) {
+            if (currentLesson) {
               $("#currentLesson").text(
-                timetableEntries[0].getAbbreviation() + " " +
-                timetableEntries[0].getTypeString() + " @ " +
-                timetableEntries[0].getLocation());
+                currentLesson.getAbbreviation() + " " +
+                currentLesson.getTypeString() + " @ " +
+                currentLesson.getLocation());
             } else {
               $("#currentLesson").text("No Lesson Currently");
             }
+
+            // Stage IV: Display all lessons in the timetable tab
+            // TODO
           }
         } else {
           console.warn("[WARNING]: Failed to load timetable: ");

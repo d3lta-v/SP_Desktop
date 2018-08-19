@@ -11,6 +11,7 @@
         "strict": true,
         "noUnusedLocals": false,
         "strictNullChecks": true,
-        "noEmitOnError": true
+        "noEmitOnError": true,
+        "allowJs": true
     }
 }
