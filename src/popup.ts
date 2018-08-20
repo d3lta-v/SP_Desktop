@@ -49,6 +49,13 @@ $(function() {
       Helper.rekeyUser((success) => {
         if (!success) {
           Helper.showLoginUIAndPurgeToken();
+        } else {
+          // Show main UI and initialise pollers
+          $("#main").show();
+          $("#tabBar").show();
+          $("#auth").hide();
+          $("#loading").hide();
+          startAllPollers();
         }
       });
     }

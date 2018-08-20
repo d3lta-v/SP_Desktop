@@ -35,6 +35,9 @@ export function userIsAuthenticated(callback: (authenticated: boolean, token: st
         if (this.status === 200) {
           // Token is valid, return callback with true
           callback(true, result.user.accessToken);
+        } else if (this.status === 401) {
+          // Token is invalid, server is still reachable
+          callback(false, undefined);
         }
       };
 
