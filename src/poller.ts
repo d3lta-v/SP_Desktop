@@ -68,6 +68,11 @@ export function timetablePoll() {
           if (this.responseText === SP.TIMETABLE_NO_LESSONS) {
             // No lessons
             $("#currentLesson").text("No Lessons");
+            $("#timetable > tbody:last-child").append(
+              `<tr>
+                <td>No lessons for today</td>
+                <td>&#x2013;&#x2013;:&#x2013;&#x2013; to &#x2013;&#x2013;:&#x2013;&#x2013;</td>
+              </tr>`);
           } else {
             const jsonArray = JSON.parse(this.responseText);
 
@@ -109,7 +114,22 @@ export function timetablePoll() {
             }
 
             // Stage IV: Display all lessons in the timetable tab
-            // TODO
+            for (const entry of timetableEntries) {
+              const moduleName = entry.getAbbreviation();
+              const lessonType = entry.getTypeString();
+              const location = entry.getLocation();
+              const startDateTime = entry.getStartDateTime();
+              const endDateTime = entry.getEndDateTime();
+
+              const lessonInfo = moduleName + " " + lessonType + " @ " + location;
+              const lessonTiming = moment(startDateTime).format("HH:mm") + " to " +
+                                    moment(endDateTime).format("HH:mm");
+              $("#timetable > tbody:last-child").append(
+              `<tr>
+                <td>${lessonInfo}</td>
+                <td>${lessonTiming}</td>
+              </tr>`);
+            }
           }
         } else {
           console.warn("[WARNING]: Failed to load timetable: ");

@@ -10,7 +10,7 @@
 /* Custom overrides of skeleton.css */
 .container {
     margin-top: 1em;
-    min-width: 31rem;
+    min-width: 32rem;
 }
 
 input[type="button"] {
