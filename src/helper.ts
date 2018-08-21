@@ -1,4 +1,5 @@
 import * as SP from "./datatypes";
+import * as $ from "jquery";
 
 /**
  * Generates an authenticated request using an existing token
@@ -152,7 +153,6 @@ export function rekeyUser(completed: (success: boolean) => void) {
       completed(false);
       // Log the user out by force since there isn't even a username and password present
       userLogout();
-      window.close();
     }
   });
 }
