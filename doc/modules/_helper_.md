@@ -24,7 +24,7 @@
 
 ▸ **authenticatedRequest**(method: *`string`*, url: *`string`*, async: *`boolean`*, token: *`string`*): `XMLHttpRequest`
 
-*Defined in [helper.ts:10](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/helper.ts#L10)*
+*Defined in [helper.ts:11](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/helper.ts#L11)*
 
 Generates an authenticated request using an existing token
 
@@ -46,7 +46,7 @@ ___
 
 ▸ **getUserToken**(callback: *`function`*): `void`
 
-*Defined in [helper.ts:53](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/helper.ts#L53)*
+*Defined in [helper.ts:57](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/helper.ts#L57)*
 
 Retrieves the user's login token only and does not perform further validation
 
@@ -65,7 +65,7 @@ ___
 
 ▸ **rekeyUser**(completed: *`function`*): `void`
 
-*Defined in [helper.ts:134](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/helper.ts#L134)*
+*Defined in [helper.ts:138](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/helper.ts#L138)*
 
 Rekey the user, or in other words, retrieve a fresh session token from the server using the user's original credentials. **WARNING**: This function will delete the user from local storage if the server returns an authentication failure message.
 
@@ -84,7 +84,7 @@ ___
 
 ▸ **showLoginUIAndPurgeToken**(): `void`
 
-*Defined in [helper.ts:161](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/helper.ts#L161)*
+*Defined in [helper.ts:164](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/helper.ts#L164)*
 
 Shows the login UI and purges the old user info. Meant to called when the program detects that user is unauthorised due to various reasons
 
@@ -97,7 +97,7 @@ ___
 
 ▸ **userIsAuthenticated**(callback: *`function`*): `void`
 
-*Defined in [helper.ts:23](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/helper.ts#L23)*
+*Defined in [helper.ts:24](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/helper.ts#L24)*
 
 Checks if the current token stored in Chrome's storage is a valid token (i.e. the user is already authenticated).
 
@@ -116,7 +116,7 @@ ___
 
 ▸ **userLogin**(username: *`string`*, password: *`string`*, successCallback: *`function`*, errorCallback: *`function`*): `void`
 
-*Defined in [helper.ts:70](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/helper.ts#L70)*
+*Defined in [helper.ts:74](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/helper.ts#L74)*
 
 Performs user login with a username and password
 
@@ -138,7 +138,7 @@ ___
 
 ▸ **userLogout**(): `void`
 
-*Defined in [helper.ts:124](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/helper.ts#L124)*
+*Defined in [helper.ts:128](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/helper.ts#L128)*
 
 Logs the user out of this extension by deleting `user`, `username` and `password`
 

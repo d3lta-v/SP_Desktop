@@ -21,7 +21,7 @@
 
 ▸ **clockPoll**(): `void`
 
-*Defined in [popup.ts:27](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/popup.ts#L27)*
+*Defined in [popup.ts:27](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/popup.ts#L27)*
 
 Refreshes the clock display every 1 second
 
@@ -34,7 +34,7 @@ ___
 
 ▸ **highlightTabButton**(name: *`string`*): `void`
 
-*Defined in [popup.ts:113](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/popup.ts#L113)*
+*Defined in [popup.ts:120](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/popup.ts#L120)*
 
 Highlights a single tab button out of all the other tab buttons
 
@@ -53,7 +53,7 @@ ___
 
 ▸ **showTab**(name: *`string`*): `void`
 
-*Defined in [popup.ts:98](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/popup.ts#L98)*
+*Defined in [popup.ts:105](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/popup.ts#L105)*
 
 Shows a single tab and hides all other tabs
 
@@ -72,7 +72,7 @@ ___
 
 ▸ **startAllPollers**(): `void`
 
-*Defined in [popup.ts:10](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/popup.ts#L10)*
+*Defined in [popup.ts:10](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/popup.ts#L10)*
 
 Starts all of the pollers, basically functions that needs to run periodically
 

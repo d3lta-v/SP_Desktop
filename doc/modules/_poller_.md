@@ -21,7 +21,7 @@
 
 ▸ **calendarPoll**(): `void`
 
-*Defined in [poller.ts:10](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/poller.ts#L10)*
+*Defined in [poller.ts:10](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/poller.ts#L10)*
 
 Retrieves events from the SP Calendar API and displays it in the main tab, if there is an event right now
 
@@ -34,7 +34,7 @@ ___
 
 ▸ **crowdPoll**(): `void`
 
-*Defined in [poller.ts:152](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/poller.ts#L152)*
+*Defined in [poller.ts:200](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/poller.ts#L200)*
 
 Checks for crowd data and displays it in the crowd tab
 
@@ -47,7 +47,7 @@ ___
 
 ▸ **spWifiPoll**(): `void`
 
-*Defined in [poller.ts:113](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/poller.ts#L113)*
+*Defined in [poller.ts:161](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/poller.ts#L161)*
 
 Checks if the user is connected to SP Wi-Fi and displays the connectivity status
 
@@ -60,7 +60,7 @@ ___
 
 ▸ **timetablePoll**(): `void`
 
-*Defined in [poller.ts:49](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/poller.ts#L49)*
+*Defined in [poller.ts:60](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/poller.ts#L60)*
 
 Gets the timetable for today and checks if the user is attending a lesson. Displays the lesson if any in the main tab
 

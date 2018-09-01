@@ -27,7 +27,7 @@ A simple interface for defining a single calendary entry from SP's Calendar API
 
 **● colorId**: *`string`*
 
-*Defined in [datatypes.ts:34](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/datatypes.ts#L34)*
+*Defined in [datatypes.ts:34](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/datatypes.ts#L34)*
 
 ___
 <a id="endtime"></a>
@@ -36,7 +36,7 @@ ___
 
 **● endTime**: *`string`*
 
-*Defined in [datatypes.ts:33](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/datatypes.ts#L33)*
+*Defined in [datatypes.ts:33](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/datatypes.ts#L33)*
 
 ___
 <a id="starttime"></a>
@@ -45,7 +45,7 @@ ___
 
 **● startTime**: *`string`*
 
-*Defined in [datatypes.ts:32](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/datatypes.ts#L32)*
+*Defined in [datatypes.ts:32](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/datatypes.ts#L32)*
 
 ___
 <a id="summary"></a>
@@ -54,7 +54,7 @@ ___
 
 **● summary**: *`string`*
 
-*Defined in [datatypes.ts:31](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/datatypes.ts#L31)*
+*Defined in [datatypes.ts:31](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/datatypes.ts#L31)*
 
 ___
 

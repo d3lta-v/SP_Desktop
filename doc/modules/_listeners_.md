@@ -19,7 +19,7 @@
 
 ▸ **atsButtonListener**(): `void`
 
-*Defined in [listeners.ts:27](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/listeners.ts#L27)*
+*Defined in [listeners.ts:27](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/listeners.ts#L27)*
 
 A listener to attach to a button to trigger the ATS interface
 
@@ -32,7 +32,7 @@ ___
 
 ▸ **loginListener**(finished: *`function`*): `void`
 
-*Defined in [listeners.ts:8](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/listeners.ts#L8)*
+*Defined in [listeners.ts:8](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/listeners.ts#L8)*
 
 Hooks up to a .click() listener for the login event
 

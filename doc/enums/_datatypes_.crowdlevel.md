@@ -22,7 +22,7 @@ An enum that describes different crowd levels as strings emitted by the API
 
 **Large**:  = "Large"
 
-*Defined in [datatypes.ts:240](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/datatypes.ts#L240)*
+*Defined in [datatypes.ts:240](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/datatypes.ts#L240)*
 
 ___
 <a id="medium"></a>
@@ -31,7 +31,7 @@ ___
 
 **Medium**:  = "Medium"
 
-*Defined in [datatypes.ts:239](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/datatypes.ts#L239)*
+*Defined in [datatypes.ts:239](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/datatypes.ts#L239)*
 
 ___
 <a id="small"></a>
@@ -40,7 +40,7 @@ ___
 
 **Small**:  = "Small"
 
-*Defined in [datatypes.ts:238](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/datatypes.ts#L238)*
+*Defined in [datatypes.ts:238](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/datatypes.ts#L238)*
 
 ___
 

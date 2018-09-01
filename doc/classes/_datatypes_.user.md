@@ -36,7 +36,7 @@ A class that encapsulates user information, such as the user's access token and 
 
 ⊕ **new User**(accessToken: *`string`*, name: *`string`*): [User](_datatypes_.user.md)
 
-*Defined in [datatypes.ts:70](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/datatypes.ts#L70)*
+*Defined in [datatypes.ts:70](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/datatypes.ts#L70)*
 
 **Parameters:**
 
@@ -57,7 +57,7 @@ ___
 
 **● accessToken**: *`string`*
 
-*Defined in [datatypes.ts:73](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/datatypes.ts#L73)*
+*Defined in [datatypes.ts:73](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/datatypes.ts#L73)*
 
 ___
 <a id="name"></a>
@@ -66,7 +66,7 @@ ___
 
 **● name**: *`string`*
 
-*Defined in [datatypes.ts:74](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/datatypes.ts#L74)*
+*Defined in [datatypes.ts:74](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/datatypes.ts#L74)*
 
 ___
 
@@ -78,7 +78,7 @@ ___
 
 ▸ **getAccessToken**(): `string`
 
-*Defined in [datatypes.ts:80](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/datatypes.ts#L80)*
+*Defined in [datatypes.ts:80](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/datatypes.ts#L80)*
 
 Retrieves the access token for this `User`
 
@@ -91,7 +91,7 @@ ___
 
 ▸ **getName**(): `string`
 
-*Defined in [datatypes.ts:84](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/datatypes.ts#L84)*
+*Defined in [datatypes.ts:84](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/datatypes.ts#L84)*
 
 **Returns:** `string`
 
@@ -102,7 +102,7 @@ ___
 
 ▸ **fromJSON**(json: *`string`*): [User](_datatypes_.user.md)
 
-*Defined in [datatypes.ts:53](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/datatypes.ts#L53)*
+*Defined in [datatypes.ts:53](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/datatypes.ts#L53)*
 
 Converts a piece of JSON into an `User` object
 
@@ -121,7 +121,7 @@ ___
 
 ▸ **isValid**(json: *`string`*): `boolean`
 
-*Defined in [datatypes.ts:62](https://github.com/d3lta-v/SP_Desktop/blob/31a6874/src/datatypes.ts#L62)*
+*Defined in [datatypes.ts:62](https://github.com/d3lta-v/SP_Desktop/blob/a479f72/src/datatypes.ts#L62)*
 
 Validates a JSON string to be a User object
 
