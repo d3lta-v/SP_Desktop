@@ -132,9 +132,20 @@ export function timetablePoll() {
             }
           }
         } else {
-          console.warn("[WARNING]: Failed to load timetable: ");
-          console.warn(this.status);
-          console.warn(this.responseText);
+          if (this.status === 417) {
+            // Timetable is not available yet
+            $("#currentLesson").text("Timetable not yet available");
+            $("#timetable > tbody:last-child").append(
+              `<tr>
+                <td>Timetable not yet available</td>
+                <td>&#x2013;&#x2013;:&#x2013;&#x2013; to &#x2013;&#x2013;:&#x2013;&#x2013;</td>
+              </tr>`);
+          } else {
+            console.warn("[WARNING]: Failed to load timetable: ");
+            console.warn(this.status);
+            console.warn(this.responseText);
+            // TODO: Add error telemetry here
+          }
         }
       };
       request.send();
