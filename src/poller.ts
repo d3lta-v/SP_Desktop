@@ -58,8 +58,8 @@ export function calendarPoll() {
  * Displays the lesson if any in the main tab
  */
 export function timetablePoll() {
-  Helper.userIsAuthenticated(function(authenticated, token) {
-    if (authenticated && token) {
+  Helper.getUserToken((token) => {
+    if (token) {
       const currentDateString = moment().format("DDMMYY");
       const request = Helper.authenticatedRequest("GET", SP.URL_TIMETABLE + currentDateString, true, token);
       request.onloadend = function() {
@@ -150,7 +150,7 @@ export function timetablePoll() {
       };
       request.send();
     } else {
-      console.error("[ERROR]: Token invalid, found during timetable retrieval!");
+      console.error("[ERROR]: Token not found, occured during timetable retrieval!");
     }
   });
 }
@@ -198,8 +198,8 @@ export function spWifiPoll() {
  * Checks for crowd data and displays it in the crowd tab
  */
 export function crowdPoll() {
-  Helper.userIsAuthenticated(function(authenticated, token) {
-    if (authenticated && token) {
+  Helper.getUserToken((token) => {
+    if (token) {
       const request = Helper.authenticatedRequest("GET", SP.URL_CROWD_CHECK, true, token);
       request.onloadend = function() {
         if (this.status === 200) {
@@ -253,7 +253,7 @@ export function crowdPoll() {
       };
       request.send();
     } else {
-      console.error("[ERROR]: Token invalid, found during crowd fetch!");
+      console.error("[ERROR]: Token not found, occured during crowd fetch!");
     }
   });
 }
