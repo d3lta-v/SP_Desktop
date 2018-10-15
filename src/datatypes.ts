@@ -105,6 +105,7 @@ export enum TimetableEntryType {
   Lab = "LAB",
   Lecture = "LEC",
   Tutorial = "TUT",
+  Project = "PRJ",
 }
 
 /**
@@ -195,6 +196,8 @@ export class TimetableEntry {
         return "Lecture";
       case TimetableEntryType.Tutorial:
         return "Tutorial";
+      case TimetableEntryType.Project:
+        return "Project";
     }
   }
 

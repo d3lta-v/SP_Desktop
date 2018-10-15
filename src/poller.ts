@@ -105,10 +105,16 @@ export function timetablePoll() {
 
             // Stage III: Display current lesson
             if (currentLesson) {
-              $("#currentLesson").text(
-                currentLesson.getAbbreviation() + " " +
-                currentLesson.getTypeString() + " @ " +
-                currentLesson.getLocation());
+              if (currentLesson.getLocation().length > 0) {
+                $("#currentLesson").text(
+                  currentLesson.getAbbreviation() + " " +
+                  currentLesson.getTypeString() + " @ " +
+                  currentLesson.getLocation());
+              } else {
+                $("#currentLesson").text(
+                  currentLesson.getAbbreviation() + " " +
+                  currentLesson.getTypeString());
+              }
             } else {
               $("#currentLesson").text("No Lesson Currently");
             }
@@ -121,7 +127,10 @@ export function timetablePoll() {
               const startDateTime = entry.getStartDateTime();
               const endDateTime = entry.getEndDateTime();
 
-              const lessonInfo = moduleName + " " + lessonType + " @ " + location;
+              let lessonInfo = moduleName + " " + lessonType;
+              if (location.length > 0) {
+                lessonInfo += " @ " + location;
+              }
               const lessonTiming = moment(startDateTime).format("HH:mm") + " to " +
                                     moment(endDateTime).format("HH:mm");
               $("#timetable > tbody:last-child").append(
