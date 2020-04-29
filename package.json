@@ -14,7 +14,7 @@
     "url": "https://github.com/sammy0025/SP_Desktop.git"
   },
   "dependencies": {
-    "jquery": "~3.3.1",
+    "jquery": "~3.5.0",
     "moment": "~2.22.0",
     "tslint": "^5.11.0"
   },
